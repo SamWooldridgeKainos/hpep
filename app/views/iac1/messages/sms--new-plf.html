@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Text message 1
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half" style="background-color: #ffffff;">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+      <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to messages
+      </a>
+    </div>
+
+    <div class="nhsuk-u-reading-width">
+
+      <span id="current-time"></span>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <div class="nhsuk-u-width-two-thirds nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2 nhsuk-u-padding-2" style="background-color: #d8dde0; border-radius: 15px;">
+        <p class="nhsuk-body">
+          {{ data['plf1-full-name'] | default('JOHN RICHARDSON') }}
+        </p>
+        <p class="nhsuk-body">
+          This is the United Kingdom Health Security Agency (UKHSA).
+        </p>
+        <p class="nhsuk-body">
+          We need to confirm the information you gave on your Passsenger Locator Form.
+        </p>
+        <p class="nhsuk-body">
+          Did you arrive in the UK between 16 May and 25 May?
+        </p>
+        <p class="nhsuk-body">
+          Reply YES or NO
+        </p>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-0">
+          All texts are free.
+        </p>
+      </div>
+
+      <div id="yes-response" class="nhsuk-u-width-two-thirds nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2 nhsuk-u-padding-2" style="background-color: #d8dde0; border-radius: 15px; float: right;">
+        <p class="nhsuk-body nhsuk-u-margin-bottom-0">
+          {{ data['response'] | default('NO') }}
+        </p>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <div class="nhsuk-u-width-two-thirds nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2 nhsuk-u-padding-2" style="background-color: #d8dde0; border-radius: 15px; float: left;">
+        <p class="nhsuk-body">
+          DO NOT REPLY
+        </p>
+        <p class="nhsuk-body">
+          {{ data['plf1-full-name'] | default('SAM RICHARDSON') }}
+        </p>
+        <p class="nhsuk-body">
+          Thank you.
+        </p>
+        <p class="nhsuk-body">
+          You must now complete a new Passenger Locator Form with your updated travel details.
+        </p>
+        <p class="nhsuk-body">
+          Complete a new Passenger Locator Form at <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk">https://www.gov.uk/provide-journey-contact-details-before-travel-uk</a>
+        </p>
+        <p class="nhsuk-body">
+          If you cancelled your travel plans and did not travel to the UK, you do not need to do anything.
+        </p>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-0">
+          UK Health Security Agency
+        </p>
+      </div>
+
+    </div>
+
+    <form action="#" accept-charset="UTF-8" method="post">
+
+      <input id="sms-text-field" class="nhsuk-input nhsuk-u-width-three-quarters" autocomplete="off" spell_check="false" type="text" name="response0" value="{{ data['test-last-name'] }}" placeholder="Text message">
+
+      <button class="nhsuk-button" type="submit" style="height: 38px;">
+        <p class="nhsuk-body-s" style="line-height: 1;">Send</p>
+      </button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

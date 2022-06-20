@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You must quarantine | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-u-reading-width">
+      <h1 class="nhsuk-heading-l">
+        You must quarantine
+      </h1>
+    </div>
+
+    <!--<div class="nhsuk-u-width-two-thirds">
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Caroline Laurent
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Passenger Locator Form reference
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            UKVI_5ZAA012345678
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>-->
+
+    <div class="nhsuk-warning-callout">
+      <div class="nhsuk-u-reading-width">
+        <h2 class="nhsuk-warning-callout__label">
+          <span role="text">
+            <span class="nhsuk-u-visually-hidden">Important: </span>
+            Your legal duty
+          </span>
+        </h2>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-0">
+          It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="nhsuk-do-dont-list">
+      <h2 class="nhsuk-do-dont-list__label">
+        Do
+      </h2>
+      <div class="nhsuk-u-reading-width">
+        <ul class="nhsuk-list nhsuk-list--tick nhsuk-u-margin-bottom-0">
+          <li>
+            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+            </svg>
+            stay at the address you stated on your Passenger Locator Form
+          </li>
+          <li>
+            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+            </svg>
+            take the tests you booked, and report the results
+          </li>
+          <li>
+            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+            </svg>
+            suggest that everyone in the household quarantines with you, if you are in a private home
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nhsuk-do-dont-list">
+      <h2 class="nhsuk-do-dont-list__label">
+        Don&#39;t
+      </h2>
+      <div class="nhsuk-u-reading-width">
+        <ul class="nhsuk-list nhsuk-list--cross nhsuk-u-margin-bottom-0">
+          <li>
+            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+              <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+            </svg>
+            do not allow any visitors to your accommodation, including hotel staff or friends and family (except if there is an emergency)
+          </li>
+          <li>
+            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+              <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+            </svg>
+            do not leave quarantine for any reason (except if you're attending your health test, posting a self-administered test, or if you're at risk of harm)
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <form name="myForm" id="myForm" action="/iac1/compliance/confirmation" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+          <div class="nhsuk-u-reading-width">
+            <h2 class="nhsuk-heading-m">
+              Your cannot change your answer
+            </h2>
+            <p class="nhsuk-card__description">
+              You must follow these quarantine rules. It keeps you and the community safe.
+            </p>
+            <p class="nhsuk-card__description nhsuk-u-margin-bottom-0">
+              Failure to quarantine is against the law, and may result in a police investigation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  // Errors
+  function validateForm() {
+    var formOptions = document.forms["myForm"]["compliance1"].value;
+
+    if (formOptions == "" || formOptions == null) {
+
+      // Error form group styling
+      var formGroup = document.getElementById("error-form-group");
+      formGroup.classList.add("nhsuk-form-group--error");
+
+      // Error message
+      var errorMessage = document.getElementById("error-1");
+      errorMessage.style.display = 'block';
+
+      var errorMessageContent1 = document.getElementById("error-message-content-1");
+      errorMessageContent1.innerHTML = 'Select yes if you agree to quarantine';
+
+      // Error summary
+      var errorSummary = document.getElementById("error-summary");
+      errorSummary.style.display = 'block';
+      errorSummary.focus();
+
+      var errorSummaryContent1 = document.getElementById("error-summary-content-1");
+      errorSummaryContent1.innerHTML = '<a href="#error-1">Select yes if you agree to quarantine</a>';
+
+      return false;
+    }
+  }
+</script>
+{% endblock %}

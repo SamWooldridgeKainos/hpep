@@ -1,0 +1,131 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Pre-prototype questions
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row" style="background-color: #ffffff;">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-u-reading-width">
+      <h1 class="nhsuk-heading-l">
+        Pre-prototype question
+      </h1>
+
+      <p class="nhsuk-body">
+        This information will be used in the prototype you are about to test to make it more realistic.
+      </p>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <h2 class="nhsuk-heading-m">
+        Your details given on Passenger Locator Form
+      </h2>
+
+      <span id="current-time"></span>
+    </div>
+
+    <form action="/iac1/messages/sms--in-country" accept-charset="UTF-8" method="post">
+
+      <!--<h2 class="nhsuk-heading-m">
+        Person who tested positive for COVID-19
+      </h2>-->
+
+      <div class="nhsuk-form-group">
+        <label for="plf-full-name" class="nhsuk-label">
+          Full name (of traveller)
+        </label>
+        <input id="plf1-full-name" class="nhsuk-input nhsuk-u-width-two-thirds" autocomplete="plf1-full-name" spell_check="false" type="text" name="plf1-full-name" value="{{ data['plf1-full-name'] }}">
+      </div>
+
+      <!--<div class="nhsuk-form-group">
+        <label for="individual-first-name" class="nhsuk-label">
+          First name (of person who tested positive)
+        </label>
+        <input id="case-first-name" class="nhsuk-input nhsuk-u-width-one-half" autocomplete="case-first-name" spell_check="false" type="text" name="test-first-name" value="{{ data['test-first-name'] }}">
+      </div>
+
+      <div class="nhsuk-form-group">
+        <label for="individual-last-name" class="nhsuk-label">
+          Last name (of person who tested positive)
+        </label>
+        <input id="case-last-name" class="nhsuk-input nhsuk-u-width-one-half" autocomplete="case-last-name" spell_check="false" type="text" name="test-last-name" value="{{ data['test-last-name'] }}">
+      </div>-->
+
+      <!--<div class="nhsuk-form-group">
+          <label for="test-age" class="nhsuk-label">
+            Age (of traveller)
+          </label>
+          <div class="nhsuk-radios" id="test-age">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="plf-over-18" name="plf1-age" type="radio" value="18 or over" {{ checked("plf1-age", "18 or over") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="plf-over-18">
+                18 or over
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="plf-under-18" name="plf1-age" type="radio" value="Under 18" {{ checked("plf1-age", "Under 18") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="plf-under-18">
+                Under 18
+              </label>
+            </div>
+
+          </div>
+      </div>-->
+
+      <!--<hr class="nhsuk-section-break nhsuk-section-break--l">
+
+      <h2 class="nhsuk-heading-m">
+        Contact details (used to receive test result)
+      </h2>-->
+
+      <!--<div class="nhsuk-form-group">
+        <label for="individual-email-field" class="nhsuk-label">
+          Email address
+        </label>
+        <span class="nhsuk-hint" id="individual-email-hint">
+          For example, mail@example.com
+        </span>
+        <input id="individual-email-field" class="nhsuk-input nhsuk-u-width-two-thirds" aria-describedby="individual-email-hint" autocomplete="email" spellcheck="false" type="email" name="test-email-address" value="{{ data['test-email-address'] }}">
+      </div>-->
+
+      <!--<div class="nhsuk-form-group">
+        <label for="plf-phone-field" class="nhsuk-label">
+          Phone number (of traveller)
+        </label>
+        <span class="nhsuk-hint" id="plf-phone-hint">
+          For example, 01632 960 001, 07700 900 982 or (+44) 7700 900 982
+        </span>
+        <input id="plf-phone-field" class="nhsuk-input nhsuk-u-width-one-third" aria-describedby="plf-phone-hint" autocomplete="tel" type="tel" name="plf1-phone-number" value="{{ data['plf1-phone-number'] }}">
+      </div>-->
+
+      <!--<div class="nhsuk-form-group">
+        <label for="individual-phone-field" class="nhsuk-label">
+          Alternative phone number (optional)
+        </label>
+        <span class="nhsuk-hint" id="individual-phone-hint">
+          For example, 01632 960 001, 07700 900 982 or (+44) 7700 900 982
+        </span>
+        <input id="individual-phone-field" class="nhsuk-input nhsuk-u-width-one-third" aria-describedby="individual-phone-hint" autocomplete="tel" type="tel" name="test-alt-phone-number" value="{{ data['test-alt-phone-number'] }}">
+      </div>-->
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Generate prototype
+      </button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You must quarantine | UKHSA
+{% endblock %}
+
+{% block outerContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" id="grid-column-div">
+
+    <!--<div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden>
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li><a href="#error-1"><span id="error-summary-content-1"></span></a></li>
+        </ul>
+      </div>
+    </div>-->
+
+    <h1 class="govuk-heading-l" id="heading-h1">
+      Confirm your agreement to quarantine
+    </h1>
+
+    <!--<dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Caroline Laurent
+        </dd>
+
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Passenger Locator Form reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UKVI_5ZAA012345678
+        </dd>
+
+      </div>
+
+    </dl>-->
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Important: </span>
+        <p>
+          It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
+        </p>
+      </strong>
+    </div>
+
+    <p class="govuk-body">Do:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>stay at the address you stated on your Passenger Locator Form</li>
+      <li>take the tests you booked, and report the results</li>
+      <li>suggest that everyone in the household quarantines with you, if you are in a private home</li>
+    </ul>
+
+    <p class="govuk-body">Don&#39;t:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>do not allow any visitors to your accommodation, including hotel staff or friends and family (except if there is an emergency)</li>
+      <li>do not leave quarantine for any reason (except if you're attending your health test, posting a self-administered test, or if you're at risk of harm)</li>
+    </ul>
+
+    <div class="govuk-inset-text">
+      <p>
+        You must follow these quarantine rules. It keeps you and the community safe.
+      </p>
+      <p>
+        Failure to quarantine is against the law, and may result in a police investigation.
+      </p>
+    </div>
+
+    <form name="myForm" id="myForm" action="/iac1/compliance/confirmation" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+
+      <div class="govuk-form-group" id="error-form-group">
+
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h3 class="govuk-fieldset__heading">
+              Do you agree to quarantine as instructed?
+            </h3>
+          </legend>
+
+          <div class="govuk-radios" id="form-1">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="agree-yes" name="compliance1" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="agree-yes">
+                Yes, I agree
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="agree-no" name="compliance1" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="agree-no">
+                No, I do not agree
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      <button class="govuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  // Errors
+  function validateForm() {
+    var formOptions = document.forms["myForm"]["compliance1"].value;
+
+    if (formOptions == "" || formOptions == null) {
+
+      // Error form group styling
+      var formGroup = document.getElementById("error-form-group");
+      formGroup.classList.add("govuk-form-group--error");
+
+      // Error message
+      //var errorMessage = document.getElementById("error-1");
+      //errorMessage.style.display = 'block';
+
+      $('#form-1').prepend('<span class="govuk-error-message" id="error-1" hidden><span class="govuk-visually-hidden">Error:</span> Select yes if you agree to quarantine</span>');
+
+      //var errorMessageContent1 = document.getElementById("error-message-content-1");
+      //errorMessageContent1.innerHTML = 'Select yes if you agree to quarantine';
+
+      // Error summary
+      // var errorSummary = document.getElementById("error-summary");
+      // errorSummary.style.display = 'block';
+      // errorSummary.focus();
+
+      // var errorSummaryContent1 = document.getElementById("error-summary-content-1");
+      // errorSummaryContent1.innerHTML = '<a href="#error-1">Select yes if you agree to quarantine</a>';
+
+      $('#heading-h1').prepend('<div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select yes if you agree to quarantine</a></li></ul></div></div>');
+
+      return false;
+    }
+  }
+</script>
+{% endblock %}
