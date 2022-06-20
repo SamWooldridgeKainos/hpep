@@ -2,14 +2,29 @@ const express = require('express')
 const router = express.Router()
 
 // Add your routes here - above the module.exports line
-router.post('/iac1/compliance/confirmation', function(req, res) {
 
-  var compliance = req.session.data['compliance1']
+router.post('/border-response/messages/sms-response', function(req, res) {
+
+  var response = req.session.data['response']
+
+  if (response == "Yes" || response == "YES" || response == "yes" || response == "y" || response == "Y") {
+    res.redirect('/border-response/messages/sms--yes')
+  } else if (response == "No" || response == "NO" || response == "no" || response == "n" || response == "N") {
+    res.redirect('/border-response/messages/sms--no')
+  } else {
+    res.redirect('/border-response/messages/sms--in-country')
+  }
+
+})
+
+router.post('/border-response/confirmation', function(req, res) {
+
+  var compliance = req.session.data['compliance']
 
   if (compliance == "Yes") {
-    res.redirect('/iac1/compliance/confirmation--compliant')
+    res.redirect('/border-response/confirmation/compliant')
   } else {
-    res.redirect('/iac1/compliance/confirmation--non-compliant')
+    res.redirect('/border-response/confirmation/non-compliant')
   }
 
 })

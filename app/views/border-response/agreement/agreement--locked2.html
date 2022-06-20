@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You must quarantine | UK Health Security Agency
+{% endblock %}
+
+{% block outerContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" id="grid-column-div">
+
+    <h1 class="govuk-heading-l" id="heading-h1">
+      Confirm your agreement to quarantine
+    </h1>
+
+    <!--<dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Caroline Laurent
+        </dd>
+
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Passenger Locator Form reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UKVI_5ZAA012345678
+        </dd>
+
+      </div>
+
+    </dl>-->
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Important: </span>
+        <p>
+          It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
+        </p>
+      </strong>
+    </div>
+
+    <p class="govuk-body">Do:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>stay at the address you stated on your Passenger Locator Form</li>
+      <li>take the tests you booked, and report the results</li>
+      <li>suggest that everyone in the household quarantines with you, if you are in a private home</li>
+    </ul>
+
+    <p class="govuk-body">Don&#39;t:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>do not allow any visitors to your accommodation, including hotel staff or friends and family (except if there is an emergency)</li>
+      <li>do not leave quarantine for any reason (except if you're attending your health test, posting a self-administered test, or if you're at risk of harm)</li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+    <form name="myForm" id="myForm" action="/border-response/confirmation" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Your cannot change your answer
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You must follow these quarantine rules. It keeps you and the community safe.
+          </p>
+          <p>
+            Failure to quarantine is against the law, and may result in a police investigation.
+          </p>
+        </div>
+      </div>
+
+      <button class="govuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

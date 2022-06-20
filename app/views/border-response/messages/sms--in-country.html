@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Text message 1
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half" style="background-color: #ffffff;">
+
+    <a href="#" class="govuk-back-link">Back to messages</a>
+
+    <div class="govuk-!-width-three-quarters govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-!-padding-2" style="background-color: #d8dde0; border-radius: 15px;">
+      <p class="govuk-body">
+        {{ data['plf1-full-name'] | default('SAM RICHARDSON') }}
+      </p>
+      <p class="govuk-body">
+        This is the United Kingdom Health Security Agency (UKHSA).
+      </p>
+      <p class="govuk-body">
+        We need to confirm the information you gave on your Passsenger Locator Form.
+      </p>
+      <p class="govuk-body">
+        Did you arrive in the UK between 10 June and 20 June?
+      </p>
+      <p class="govuk-body">
+        Reply YES or NO
+      </p>
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        All texts are free.
+      </p>
+    </div>
+
+    <form action="/border-response/messages/sms-response" accept-charset="UTF-8" method="post">
+
+      <input id="case-last-name" class="govuk-input govuk-!-width-three-quarters" autocomplete="off" spell_check="false" type="text" name="response" value="{{ data['sms-response'] }}" placeholder="Text message">
+
+      <button class="govuk-button" data-module="govuk-button">
+        Send
+      </button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

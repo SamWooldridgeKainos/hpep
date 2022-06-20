@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-You must quarantine | UKHSA
+You must quarantine | UK Health Security Agency
 {% endblock %}
 
 {% block outerContent %}
@@ -10,9 +10,9 @@ You must quarantine | UKHSA
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds" id="grid-column-div">
+  <div class="govuk-grid-column-two-thirds">
 
-    <!--<div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden>
+    <div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden>
       <h2 class="govuk-error-summary__title" id="error-summary-title">
         There is a problem
       </h2>
@@ -21,10 +21,10 @@ You must quarantine | UKHSA
           <li><a href="#error-1"><span id="error-summary-content-1"></span></a></li>
         </ul>
       </div>
-    </div>-->
+    </div>
 
-    <h1 class="govuk-heading-l" id="heading-h1">
-      Confirm your agreement to quarantine
+    <h1 class="govuk-heading-l">
+      You must quarantine
     </h1>
 
     <!--<dl class="govuk-summary-list">
@@ -55,9 +55,7 @@ You must quarantine | UKHSA
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-warning-text__assistive">Important: </span>
-        <p>
-          It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
-        </p>
+        It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
       </strong>
     </div>
 
@@ -74,16 +72,21 @@ You must quarantine | UKHSA
       <li>do not leave quarantine for any reason (except if you're attending your health test, posting a self-administered test, or if you're at risk of harm)</li>
     </ul>
 
-    <div class="govuk-inset-text">
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    <form name="myForm" id="myForm" action="/border-response/confirmation" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+
+      <h2 class="govuk-heading-m">
+        Confirm your agreement to quarantine
+      </h2>
+
       <p>
         You must follow these quarantine rules. It keeps you and the community safe.
       </p>
-      <p>
-        Failure to quarantine is against the law, and may result in a police investigation.
-      </p>
-    </div>
 
-    <form name="myForm" id="myForm" action="/iac1/compliance/confirmation" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+      <div class="govuk-inset-text">
+        Failure to quarantine is against the law, and may result in a police investigation.
+      </div>
 
       <div class="govuk-form-group" id="error-form-group">
 
@@ -95,17 +98,21 @@ You must quarantine | UKHSA
             </h3>
           </legend>
 
+          <span class="govuk-error-message" id="error-1" hidden>
+            <span class="govuk-visually-hidden">Error:</span> <span id="error-message-content-1"></span>
+          </span>
+
           <div class="govuk-radios" id="form-1">
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="agree-yes" name="compliance1" type="radio" value="Yes">
+              <input class="govuk-radios__input" id="agree-yes" name="compliance" type="radio" value="Yes">
               <label class="govuk-label govuk-radios__label" for="agree-yes">
                 Yes, I agree
               </label>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="agree-no" name="compliance1" type="radio" value="No">
+              <input class="govuk-radios__input" id="agree-no" name="compliance" type="radio" value="No">
               <label class="govuk-label govuk-radios__label" for="agree-no">
                 No, I do not agree
               </label>
@@ -129,7 +136,7 @@ You must quarantine | UKHSA
 <script>
   // Errors
   function validateForm() {
-    var formOptions = document.forms["myForm"]["compliance1"].value;
+    var formOptions = document.forms["myForm"]["compliance"].value;
 
     if (formOptions == "" || formOptions == null) {
 
@@ -138,23 +145,33 @@ You must quarantine | UKHSA
       formGroup.classList.add("govuk-form-group--error");
 
       // Error message
-      //var errorMessage = document.getElementById("error-1");
-      //errorMessage.style.display = 'block';
+      var errorMessage = document.getElementById("error-1");
+      errorMessage.style.display = 'block';
 
-      $('#form-1').prepend('<span class="govuk-error-message" id="error-1" hidden><span class="govuk-visually-hidden">Error:</span> Select yes if you agree to quarantine</span>');
+      var container = document.getElementById("error-form-group");
+      var div = document.getElementById("form-1");
 
-      //var errorMessageContent1 = document.getElementById("error-message-content-1");
-      //errorMessageContent1.innerHTML = 'Select yes if you agree to quarantine';
+      /*
+      var divAbove = document.createElement("div");
+      divAbove.id = "up";
+      divAbove.style.backgroundColor = "red";
+      divAbove.style.width = "110px"
+      divAbove.style.height = "60px"
+      divAbove.innerHTML = "Added via JS"
+
+      container.insertBefore(divAbove, div);
+      */
+
+      var errorMessageContent1 = document.getElementById("error-message-content-1");
+      errorMessageContent1.innerHTML = 'Select yes if you agree to quarantine';
 
       // Error summary
-      // var errorSummary = document.getElementById("error-summary");
-      // errorSummary.style.display = 'block';
-      // errorSummary.focus();
+      var errorSummary = document.getElementById("error-summary");
+      errorSummary.style.display = 'block';
+      errorSummary.focus();
 
-      // var errorSummaryContent1 = document.getElementById("error-summary-content-1");
-      // errorSummaryContent1.innerHTML = '<a href="#error-1">Select yes if you agree to quarantine</a>';
-
-      $('#heading-h1').prepend('<div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select yes if you agree to quarantine</a></li></ul></div></div>');
+      var errorSummaryContent1 = document.getElementById("error-summary-content-1");
+      errorSummaryContent1.innerHTML = '<a href="#error-1">Select yes if you agree to quarantine</a>';
 
       return false;
     }
