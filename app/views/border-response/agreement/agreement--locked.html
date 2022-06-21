@@ -10,37 +10,35 @@ You must quarantine | UK Health Security Agency
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds" id="grid-column-div">
 
-    <h1 class="govuk-heading-l">
-      You must quarantine
+    <h1 class="govuk-heading-l" id="heading-h1">
+      Confirm your agreement to quarantine
     </h1>
 
-    <!--<div class="govuk-!-width-two-thirds">
-      <dl class="govuk-summary-list">
+    <!--<dl class="govuk-summary-list">
 
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Caroline Laurent
-          </dd>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Caroline Laurent
+        </dd>
 
-        </div>
+      </div>
 
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Passenger Locator Form reference
-          </dt>
-          <dd class="govuk-summary-list__value">
-            UKVI_5ZAA012345678
-          </dd>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Passenger Locator Form reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UKVI_5ZAA012345678
+        </dd>
 
-        </div>
+      </div>
 
-      </dl>
-    </div>-->
+    </dl>-->
 
     <div class="govuk-warning-text">
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -95,33 +93,6 @@ You must quarantine | UK Health Security Agency
 </div>
 
 <script>
-  // Errors
-  function validateForm() {
-    var formOptions = document.forms["myForm"]["compliance1"].value;
 
-    if (formOptions == "" || formOptions == null) {
-
-      // Error form group styling
-      var formGroup = document.getElementById("error-form-group");
-      formGroup.classList.add("govuk-form-group--error");
-
-      // Error message
-      var errorMessage = document.getElementById("error-1");
-      errorMessage.style.display = 'block';
-
-      var errorMessageContent1 = document.getElementById("error-message-content-1");
-      errorMessageContent1.innerHTML = 'Select yes if you agree to quarantine';
-
-      // Error summary
-      var errorSummary = document.getElementById("error-summary");
-      errorSummary.style.display = 'block';
-      errorSummary.focus();
-
-      var errorSummaryContent1 = document.getElementById("error-summary-content-1");
-      errorSummaryContent1.innerHTML = '<a href="#error-1">Select yes if you agree to quarantine</a>';
-
-      return false;
-    }
-  }
 </script>
 {% endblock %}
