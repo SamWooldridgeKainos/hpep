@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is the registered home address on your health record? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card nhsuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
+    </div>
+
+    <form action="/case/about-you/personal-details/addresses/currently-live/domestic/currently-live" accept-charset="UTF-8" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+
+          <div class="nhsuk-u-reading-width">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-heading-l">
+                What is the registered home address on your health record?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-hint">
+              It might be different from where you currently live.
+            </div>
+          </div>
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="registered-address-line-1">
+              Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="registered-address-line-1" name="current-address-line-1" type="text" value="">
+          </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="registered-address-line-2">
+              <span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="registered-address-line-2" name="current-address-line-2" type="text" value="">
+          </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="registered-town-or-city">
+              Town or city
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-half" id="registered-town-or-city" name="current-town-or-city" type="text" value="">
+          </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="registered-postcode">
+              Postcode
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-quarter" id="registered-postcode" name="current-postcode" type="text" value="">
+          </div>
+
+        </fieldset>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <p class="nhsuk-body">
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+          Search for another address
+        </a>
+      </p>
+
+      <p class="nhsuk-body">
+        <a href="/case/about-you/personal-details/addresses/currently-live/international/currently-live" class="nhsuk-link nhsuk-link--no-visited-state">
+          My address is outside the UK
+        </a>
+      </p>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  // Proxy check
+  window.onload = function() {
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No, I am completing this for them") {
+      var proxyBanner = document.getElementById("proxy-banner");
+      proxyBanner.style.display = 'block';
+      document.getElementById("proxy-banner").innerHTML = '<div class="nhsuk-card__content content-display"><div class="icon-wrapper"><p>i</p></div><div><p class="nhsuk-card__title nhsuk-u-margin-bottom-0">Enter this information as if you are <strong>{{ data["positive-case-first-name"] | default("John")}} {{ data["positive-case-last-name"] | default("Richardson")}}</strong></p></div></div>';
+      return false;
+    }
+  }
+</script>
+{% endblock %}

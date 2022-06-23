@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Your information is complete | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <div class="nhsuk-u-reading-width">
+          <h1 class="nhsuk-card__heading nhsuk-heading-l">
+            Your information is complete
+          </h1>
+          <p class="nhsuk-card__description nhsuk-u-margin-bottom-0">
+            Thank you for helping to stop the spread of COVID-19. This protects your community and the NHS.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nhsuk-u-reading-width">
+
+      <p class="nhsuk-body">
+        You do not need to give us any more details right now. Care home staff can contact us if any changes or updates to your information are needed.
+      </p>
+
+      <h2 class="nhsuk-heading-m">
+        What happens next
+      </h2>
+      <p class="nhsuk-body">
+        Make sure you tell care home staff that you have tested positive for COVID-19.
+      </p>
+      <p class="nhsuk-body">
+        Because you live in a care home, extra measures are in place to help keep you safe.
+      </p>
+      <p class="nhsuk-body">
+        A Local Health Protection Team will contact your care home management and staff. Together they will make a plan to support and protect everyone who lives and works at the home. They will also help with contact tracing.
+      </p>
+
+      <h2 class="nhsuk-heading-m">
+        Providing more information
+      </h2>
+      <p class="nhsuk-body">
+        You have up to 72 hours to enter more information or change your answers.
+      </p>
+      <p class="nhsuk-body">
+        To access your account again go to <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">https://contact-tracing.phe.gov.uk/</a>, enter your account ID (aa4cdfd6) and the password that you created when prompted.
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

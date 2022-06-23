@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your registered home address? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()" style="padding-left: 0;">Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-s">
+          Answer all questions as <span class="nhsuk-highlight">{{ data['confirmed-child-first-name'] }} {{ data['confirmed-child-last-name'] }}<!--Jacqueline Richardson--></span>
+        </h2>
+      </div>
+    </div>
+
+    <!--<div class="nhsuk-body" id="proxy-flash-message">
+      You're completing on behalf of Jacqueline Richardson - please respond to all questions as though you were them.
+    </div>-->
+
+    <div data-controller="profile">
+      <form action="/case/about-you/personal-details/addresses/international/currently-live/domestic/proxy" accept-charset="UTF-8" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="authenticity_token" value="lMWsZ+uda5PEna+oU9Z+Lr+Kx2RlP01L5OYBgxVhJyOdoAOM7xUO+fjawAoL8mx38ff/4qhe0QlbZkMyDZT+Rw==">
+
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+
+            <div class="nhsuk-u-reading-width">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-heading-l">
+                  What is the registered home address on your health record?
+                </h1>
+              </legend>
+
+              <div class="nhsuk-hint">
+                It might be different from where you currently live.
+              </div>
+            </div>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="registered-address-line-1">
+                Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" id="registered-address-line-1" name="current-address-line-1" type="text" value="">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="registered-address-line-2">
+                <span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" id="registered-address-line-2" name="current-address-line-2" type="text" value="">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="registered-town-or-city">
+                Town or city
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-one-half" id="registered-town-or-city" name="current-town-or-city" type="text" value="">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="registered-postcode">
+                Postcode
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-one-quarter" id="registered-postcode" name="current-postcode" type="text" value="">
+            </div>
+
+          </fieldset>
+        </div>
+
+        <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+        <p class="nhsuk-body">
+          <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+            Search for another address
+          </a>
+        </p>
+
+        <p class="nhsuk-body">
+          <a href="/contact/about-you/addresses/current/search/state-1" class="nhsuk-link nhsuk-link--no-visited-state">
+            My address is outside the UK
+          </a>
+        </p>
+
+        <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

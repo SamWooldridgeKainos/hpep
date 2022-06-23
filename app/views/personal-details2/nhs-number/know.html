@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you know your NHS number? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card nhsuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
+    </div>
+
+    <div class="nhsuk-u-reading-width">
+
+      <form action="/case/about-you/personal-details/nhs-number/number/number" accept-charset="UTF-8" method="post">
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Do you know your NHS number?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-hint">
+              Your NHS number is a 10 digit number, like <span class="nhsuk-u-nowrap">485 777 3456</span>.
+            </div>
+
+            <div class="nhsuk-hint">
+              You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+            </div>
+
+            <div class="nhsuk-form-group">
+
+              <div class="nhsuk-radios">
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="nhs-number-yes" name="nhs-number-known" type="radio" value="Yes, I know my NHS number">
+                  <label class="nhsuk-label nhsuk-radios__label" for="nhs-number-yes">
+                    Yes, I know my NHS number
+                  </label>
+                </div>
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="nhs-number-no" name="nhs-number-known" type="radio" value="No, I do not know my NHS number">
+                  <label class="nhsuk-label nhsuk-radios__label" for="nhs-number-no">
+                    No, I do not know my NHS number
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  // Proxy check
+  window.onload = function() {
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No, I am completing this for them") {
+      var proxyBanner = document.getElementById("proxy-banner");
+      proxyBanner.style.display = 'block';
+      document.getElementById("proxy-banner").innerHTML = '<div class="nhsuk-card__content content-display"><div class="icon-wrapper"><p>i</p></div><div><p class="nhsuk-card__title nhsuk-u-margin-bottom-0">Enter this information as if you are <strong>{{ data["positive-case-first-name"] | default("John")}} {{ data["positive-case-last-name"] | default("Richardson")}}</strong></p></div></div>';
+      return false;
+    }
+  }
+</script>
+{% endblock %}

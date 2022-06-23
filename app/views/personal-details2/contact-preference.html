@@ -1,0 +1,167 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+How do you want to receive your self-isolation advice? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-card nhsuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
+    </div>
+
+    <form action="/case/household/contacts/lived-with-others" accept-charset="UTF-8" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              How would you prefer to be contacted?
+            </h1>
+          </legend>
+
+          <div class="nhsuk-radios nhsuk-radios--conditional" data-module="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input id="isolation-advice-detail-contact-preference-email-field" aria-controls="isolation-advice-detail-contact-preference-email-conditional" class="nhsuk-radios__input" type="radio" value="email"
+                name="isolation_advice_detail[contact_preference]" aria-expanded="false">
+              <label for="isolation-advice-detail-contact-preference-email-field" class="nhsuk-label nhsuk-radios__label">
+                Email
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__conditional" id="isolation-advice-detail-contact-preference-email-conditional">
+              <div class="nhsuk-form-group">
+                <label for="isolation-advice-detail-email-field" class="nhsuk-label">
+                  Email address
+                </label>
+                <input id="isolation-advice-detail-email-field" class="nhsuk-input nhsuk-u-width-two-thirds" value="{{ data['test-email-address'] | default('test@example.com')}}" type="text" name="isolation_advice_detail[email]">
+              </div>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input id="isolation-advice-detail-contact-preference-mobile-phone-field" aria-controls="isolation-advice-detail-contact-preference-mobile-phone-conditional" class="nhsuk-radios__input" type="radio" value="mobile_phone"
+                name="isolation_advice_detail[contact_preference]" aria-expanded="false">
+              <label for="isolation-advice-detail-contact-preference-mobile-phone-field" class="nhsuk-label nhsuk-radios__label">
+                Text message
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="isolation-advice-detail-contact-preference-mobile-phone-conditional">
+              <div class="nhsuk-form-group">
+                <label for="isolation-advice-detail-mobile-phone-field" class="nhsuk-label">
+                  Mobile number
+                </label>
+                <span class="nhsuk-hint" id="isolation-advice-detail-mobile-phone-hint">
+                  For example, 07700 900 982 or (+44) 7700 900 982
+                </span>
+                <input id="isolation-advice-detail-mobile-phone-field" class="nhsuk-input nhsuk-input--width-20" aria-describedby="isolation-advice-detail-mobile-phone-hint" autocomplete="tel"
+                  value="{{ data['test-phone-number'] | default('07712345678')}}" type="tel" name="isolation_advice_detail[mobile_phone]">
+              </div>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input id="isolation-advice-detail-contact-preference-mobile-phone-field" aria-controls="isolation-advice-detail-contact-preference-mobile-phone-conditional" class="nhsuk-radios__input" type="radio" value="mobile_phone"
+                name="isolation_advice_detail[contact_preference]" aria-expanded="false">
+              <label for="isolation-advice-detail-contact-preference-mobile-phone-field" class="nhsuk-label nhsuk-radios__label">
+                Call
+              </label>
+              <span class="nhsuk-hint nhsuk-radios__hint" id="isolation-advice-detail-contact-preference-address-hint">
+                Only choose this option if you do not have access to email or a mobile phone.
+              </span>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="isolation-advice-detail-contact-preference-mobile-phone-conditional">
+              <div class="nhsuk-form-group">
+                <label for="isolation-advice-detail-mobile-phone-field" class="nhsuk-label">
+                  Phone number
+                </label>
+                <span class="nhsuk-hint" id="isolation-advice-detail-mobile-phone-hint">
+                  For example, 07700 900 982 or (+44) 7700 900 982
+                </span>
+                <input id="isolation-advice-detail-mobile-phone-field" class="nhsuk-input nhsuk-input--width-20" aria-describedby="isolation-advice-detail-mobile-phone-hint" autocomplete="tel"
+                  value="{{ data['test-phone-number'] | default('07712345678')}}" type="tel" name="isolation_advice_detail[mobile_phone]">
+              </div>
+            </div>
+
+            <!--<div class="nhsuk-radios__item">
+              <input id="isolation-advice-detail-contact-preference-address-field" aria-describedby="isolation-advice-detail-contact-preference-address-hint" aria-controls="isolation-advice-detail-contact-preference-address-conditional"
+                class="nhsuk-radios__input" type="radio" value="address" name="isolation_advice_detail[contact_preference]" aria-expanded="false">
+              <label for="isolation-advice-detail-contact-preference-address-field" class="nhsuk-label nhsuk-radios__label">
+                Post (UK addresses only)
+              </label>
+              <span class="nhsuk-hint nhsuk-radios__hint" id="isolation-advice-detail-contact-preference-address-hint">
+                Only choose this option if you do not have access to email or a mobile phone.
+              </span>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="isolation-advice-detail-contact-preference-address-conditional">
+              <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="address-line-1">
+                      Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address-line-1" name="address-line-1" type="text" value="{{ data['current-address-line-1'] | default('1 Sovereign Way')}}">
+                  </div>
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="address-line-2">
+                      <span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address-line-2" name="address-line-2" type="text" value="{{ data['current-address-line-2'] | default('Boyatt Wood')}}">
+                  </div>
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="address-town">
+                      Town or city
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="address-town" name="address-town" type="text" value="{{ data['current-town-or-city'] | default('Eastleigh')}}">
+                  </div>
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="address-postcode">
+                      Postcode
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-quarter" id="address-postcode" name="address-postcode" type="text" value="{{ data['current-postcode'] | default('SO50 4SA')}}">
+                  </div>
+
+                </fieldset>
+              </div>
+
+              <p class="nhsuk-body">
+                <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">Search for another address</a>
+              </p>
+
+            </div>-->
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <input type="submit" name="commit" value="Continue" class="nhsuk-button nhsuk-button--primary" data-disable-with="Continue">
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

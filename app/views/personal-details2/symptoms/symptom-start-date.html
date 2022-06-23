@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Symptoms start date | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">
+      Symptoms start date
+    </h1>
+
+    <div class="nhsuk-u-reading-width">
+      <p>The first date you had symptoms might be different from when you tested positive for COVID-19 on <strong>Tuesday 29 June 2021</strong>.</p>
+      <!--<p>Your symptom start date might be different from when you tested positive for COVID-19 on <strong>Tuesday 29 June 2021</strong>.</p>-->
+      <!--<p>You tested positive for COVID-19 on <strong>Tuesday 29 June 2021</strong>.</p>-->
+    </div>
+
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p><strong>Your symptoms:</strong></p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>New, continuous cough</li>
+        <li>High temperature or fever<br><span style="color: #4c6272">You feel hot to touch on your chest or back</span></li>
+        <li>Sore throat</li>
+      </ul>
+    </div>
+
+    <form action="summary" accept-charset="UTF-8" method="post">
+      <fieldset class="nhsuk-fieldset">
+
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+          <h2 class="nhsuk-fieldset__heading">
+            When did your symptoms first start?
+          </h2>
+        </legend>
+
+        <div class="nhsuk-u-reading-width">
+          <div class="nhsuk-hint">
+            <!--<p>The first date you had symptoms might be different from when you tested positive for COVID-19 on <strong>Tuesday 29 June 2021</strong>.</p>-->
+            <!--<p>If you have had more than one symptom, enter the date of when the first symptom started.</p>-->
+            <!--<p>Enter the date the first symptom started. For example, 17 5 2021</p>-->
+            <p>For example, 17 5 2021</p>
+          </div>
+        </div>
+
+        <div class="nhsuk-date-input">
+
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="episode_first_symptomatic_at_3i">
+                Day
+              </label>
+              <input id="episode_first_symptomatic_at_3i" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" name="episode[first_symptomatic_at(3i)]" type="number" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="episode_first_symptomatic_at_2i">
+                Month
+              </label>
+              <input id="episode_first_symptomatic_at_2i" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" name="episode[first_symptomatic_at(2i)]" type="number" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="episode_first_symptomatic_at_1i">
+                Year
+              </label>
+              <input id="episode_first_symptomatic_at_1i" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" name="episode[first_symptomatic_at(1i)]" type="number" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+
+        </div>
+
+      </fieldset>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+{% endblock %}

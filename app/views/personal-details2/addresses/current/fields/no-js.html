@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Where are you living or staying right now? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()" style="padding-left: 0;">Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card nhsuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
+    </div>
+
+    <form action="/case/about-you/personal-details/addresses/accommodation" accept-charset="UTF-8" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+
+          <div class="nhsuk-u-reading-width">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-heading-l">
+                Where are you living or staying right now?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-hint">
+              This might be your current home, or a place you're staying at, like a hotel or a friend's house.
+            </div>
+          </div>
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="current-address-line-1">
+              Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="current-address-line-1" name="current-address-line-1" type="text" value="">
+          </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="current-address-line-2">
+              <span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="current-address-line-2" name="current-address-line-2" type="text" value="">
+          </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="current-town-or-city">
+              Town or city
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-half" id="current-town-or-city" name="current-town-or-city" type="text" value="">
+          </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="current-postcode">
+              Postcode
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-quarter" id="current-postcode" name="current-postcode" type="text" value="">
+          </div>
+
+        </fieldset>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <p class="nhsuk-body">
+        <a href="/contact/about-you/addresses/current/search/state-1" class="nhsuk-link nhsuk-link--no-visited-state">
+          I am outside of the UK right now
+        </a>
+      </p>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // Proxy check
+  window.onload = function() {
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No, I am completing this for them") {
+      var proxyBanner = document.getElementById("proxy-banner");
+      proxyBanner.style.display = 'block';
+      document.getElementById("proxy-banner").innerHTML = '<div class="nhsuk-card__content content-display"><div class="icon-wrapper"><p>i</p></div><div><p class="nhsuk-card__title nhsuk-u-margin-bottom-0">Enter this information as if you are <strong>{{ data["positive-case-first-name"] | default("John")}} {{ data["positive-case-last-name"] | default("Richardson")}}</strong></p></div></div>';
+      return false;
+    }
+  }
+</script>
+{% endblock %}

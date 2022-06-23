@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Confirm the name of the person who tested positive | NHS Test and Trace
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l">
+      Confirm the name of the person who tested positive
+    </h1>
+
+    <div class="nhsuk-warning-callout">
+      <h2 class="nhsuk-warning-callout__label">
+        <span role="text">
+          <span class="nhsuk-u-visually-hidden">Important: </span>
+          Help us match the right record
+        </span>
+      </h2>
+      <p>
+        Make sure the name of the person who tested positive is exactly as it appears on their health record. This helps us to identify them correctly.
+      </p>
+    </div>
+
+    <form action="#" accept-charset="UTF-8" method="post">
+
+      <div class="nhsuk-form-group">
+        <label for="individual-first-name" class="nhsuk-label">
+          Full name
+        </label>
+        <input id="individual-first-name" class="nhsuk-input" autocomplete="given-name" spell_check="false" type="text" value="{{ data['test-name'] | default('John Richardson')}}" name="positive-case-name">
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+{% endblock %}

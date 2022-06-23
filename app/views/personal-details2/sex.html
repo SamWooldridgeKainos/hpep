@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which of the following is recorded on your medical record? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-card nhsuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
+    </div>
+
+    <form action="/case/about-you/personal-details/ethnicity/ethnic-group/ethnic-group" method="post" class="form">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Which of the following is recorded on your medical record?
+            </h1>
+          </legend>
+
+          <p class="nhsuk-body">
+            We understand that you might not identify with what is on your medical record.
+          </p>
+
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="medical-record-female" name="medical-record" type="radio" value="Female">
+              <label class="nhsuk-label nhsuk-radios__label" for="medical-record-female">
+                Female
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="medical-record-male" name="medical-record" type="radio" value="Male">
+              <label class="nhsuk-label nhsuk-radios__label" for="medical-record-male">
+                Male
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="medical-record-other" name="medical-record" type="radio" value="Other / Not specified / I do not know">
+              <label class="nhsuk-label nhsuk-radios__label nhsuk-label" for="medical-record-other">
+                Other / Not specified / I do not know
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Why are we asking this?
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>
+            This helps us to understand how COVID-19 affects different groups of people.
+          </p>
+        </div>
+      </details>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

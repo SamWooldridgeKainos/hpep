@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have a phone number? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden>
+    </div>
+
+    <form name="myForm" action="/case/household/contacts/over-18" onsubmit="return validateForm()" method="post" required>
+
+      <div class="nhsuk-form-group" id="error-form-group">
+        <fieldset class="nhsuk-fieldset">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Do you have a phone number?
+            </h1>
+          </legend>
+
+          <div class="nhsuk-hint">
+            A mobile number is preferred
+          </div>
+
+          <span class="nhsuk-error-message" id="know-phone-error-message">
+          </span>
+
+          <div class="nhsuk-radios nhsuk-radios--conditional">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="phone-number-another" name="contact-phone-number-1" type="radio" aria-controls="conditional-contact-1" aria-expanded="false" value=""
+                {{ checked("contact-phone-number-1", "Another phone number") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="phone-number-another">
+                Yes
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="phone">
+                  Phone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="phone" name="contact-phone-1" type="tel" autocomplete="tel" value="{{ data['contact-phone-1']}}">
+              </div>
+
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="phone-number-no" name="contact-phone-number-1" type="radio" value="No phone number" {{ checked("contact-phone-number-1", "No phone number") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="phone-number-no">
+                No, I do not have a phone number
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  // Errors
+  function validateForm() {
+    var knowPhone = document.forms["myForm"]["contact-phone-number-known-1"].value;
+
+    if (knowPhone == "" || knowPhone == null) {
+
+      // Error form group styling
+      var formGroup = document.getElementById("error-form-group");
+      formGroup.classList.add("nhsuk-form-group--error");
+
+      // Error message
+      document.getElementById("know-phone-error-message").innerHTML = '<span class="nhsuk-u-visually-hidden">Error:</span> Select yes if you know their phone number';
+
+      // Error summary
+      var errorSummary = document.getElementById("error-summary");
+      errorSummary.innerHTML =
+        '<h2 class="nhsuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="nhsuk-error-summary__body"><ul class="nhsuk-list nhsuk-error-summary__list"><li><a href="#know-phone-error-message">Select yes if you know their phone number</a></li></ul></div>';
+      errorSummary.style.display = 'block';
+      errorSummary.focus();
+      return false;
+    }
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Confirm your contact details | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">
+      Confirm your contact details
+    </h1>
+
+    <div class="nhsuk-u-width-two-thirds">
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['test-email-address'] | default('test@example.com')}}
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['test-phone-number'] | default('07712345678')}}
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>
+
+    <form action="/case/about-you/personal-details/nhs-number/know/know" accept-charset="UTF-8" method="post">
+
+      <div class="nhsuk-form-group">
+        <label for="individual-backup-landline-field" class="nhsuk-label">
+          Alternative phone number (optional)
+        </label>
+        <span class="nhsuk-hint" id="individual-backup-landline-hint">
+          For example, 01632 960 001, 07700 900 982 or (+44) 7700 900 982
+        </span>
+        <input id="individual-backup-landline-field" class="nhsuk-input nhsuk-u-width-one-third" aria-describedby="individual-backup-landline-hint" autocomplete="tel" type="tel" value="" name="positive-case-alternative-phone-number">
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you currently live at your registered home address? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()" style="padding-left: 0;">Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-s">
+          Answer all questions as <span class="nhsuk-highlight">{{ data['confirmed-child-first-name'] }} {{ data['confirmed-child-last-name'] }}<!--Jacqueline Richardson--></span>
+        </h2>
+      </div>
+    </div>
+
+    <!--<div class="nhsuk-body" id="proxy-flash-message">
+      You're completing on behalf of Jacqueline Richardson - please respond to all questions as though you were them.
+    </div>-->
+
+    <form action="/case/about-you/personal-details/addresses/international/current/" accept-charset="UTF-8" method="post">
+      <div class="nhsuk-form-group">
+        <div class="nhsuk-u-reading-width">
+
+          <fieldset class="nhsuk-fieldset">
+
+
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Do you currently live at {{ data['current-address-line-1'] }}<!--1 Sovereign Way-->?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+
+              <div class="nhsuk-radios__item">
+                <input id="individual-home-current-true-field" class="nhsuk-radios__input" type="radio" value="Yes" name="currently-live">
+                <label for="individual-home-current-true-field" class="nhsuk-label nhsuk-radios__label">
+                  Yes
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input id="individual-home-current-field" class="nhsuk-radios__input" type="radio" value="No" name="currently-live">
+                <label for="individual-home-current-field" class="nhsuk-label nhsuk-radios__label">
+                  No
+                </label>
+              </div>
+
+            </div>
+
+
+          </fieldset>
+        </div>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

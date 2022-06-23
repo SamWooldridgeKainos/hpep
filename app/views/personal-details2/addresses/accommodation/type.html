@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What type of home is your current address? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card nhsuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
+    </div>
+
+    <form action="/case/about-you/vaccines/had-vaccine/had-vaccine" accept-charset="UTF-8" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+
+          <div class="nhsuk-u-reading-width">
+
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                What type of home is <em class="nhsuk-highlight">{{ data['current-address-line-1'] | default('1 Sovereign Way')}}</em>?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+
+              <div class="nhsuk-radios__item">
+                <input id="own-home-or-family-home" class="nhsuk-radios__input" type="radio" value="Your own home, or family home" name="accommodation-type">
+                <label for="own-home-or-family-home" class="nhsuk-label nhsuk-radios__label">
+                  Family home, or own home
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input id="shared-living-space" class="nhsuk-radios__input" type="radio" value="Shared living space" name="accommodation-type">
+                <label for="shared-living-space" class="nhsuk-label nhsuk-radios__label">
+                  Shared living space
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint">
+                  For example, a flatshare or student halls of residence
+                </div>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input id="other" class="nhsuk-radios__input" type="radio" value="Other" name="accommodation-type">
+                <label for="other" class="nhsuk-label nhsuk-radios__label">
+                  Other
+                </label>
+              </div>
+
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  // Proxy check
+  window.onload = function() {
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No, I am completing this for them") {
+      var proxyBanner = document.getElementById("proxy-banner");
+      proxyBanner.style.display = 'block';
+      document.getElementById("proxy-banner").innerHTML = '<div class="nhsuk-card__content content-display"><div class="icon-wrapper"><p>i</p></div><div><p class="nhsuk-card__title nhsuk-u-margin-bottom-0">Enter this information as if you are <strong>{{ data["positive-case-first-name"] | default("John")}} {{ data["positive-case-last-name"] | default("Richardson")}}</strong></p></div></div>';
+      return false;
+    }
+  }
+</script>
+{% endblock %}
