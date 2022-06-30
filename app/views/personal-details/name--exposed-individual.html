@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your name? | UK Health Security Agency
+Confirm the name of the person identified as a contact of someone who tested positive | UK Health Security Agency
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,30 +18,24 @@ What is your name? | UK Health Security Agency
         <fieldset class="govuk-fieldset">
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Personal details</span>
             <h1 class="govuk-fieldset__heading">
-              What is your name?
+              Confirm the name of the person identified as a contact of someone who tested positive
             </h1>
           </legend>
-
-          <!--<div class="govuk-form-group">
-            <label for="full-name" class="govuk-label">
-              Full name
-            </label>
-            <input id="full-name" class="govuk-input" autocomplete="name" spell_check="false" type="text" name="full-name" value="">
-          </div>-->
 
           <div class="govuk-form-group">
             <label for="given-name" class="govuk-label">
               Given name(s)
             </label>
-            <input id="given-name" class="govuk-input govuk-!-width-two-thirds" autocomplete="given-name" spell_check="false" type="text" name="given-names" value="">
+            <input id="exposed-individual-given-names" class="govuk-input govuk-!-width-two-thirds" autocomplete="given-name" spell_check="false" type="text" name="given-names" value="{{ data['exposed-individual-given-names'] | default('Fred') }}">
           </div>
 
           <div class="govuk-form-group">
             <label for="family-name" class="govuk-label">
               Family name
             </label>
-            <input id="family-name" class="govuk-input govuk-!-width-two-thirds" autocomplete="family-name" spell_check="false" type="text" name="family-name" value="">
+            <input id="exposed-individual-family-names" class="govuk-input govuk-!-width-two-thirds" autocomplete="family-name" spell_check="false" type="text" name="family-name" value="{{ data['exposed-individual-family-name'] | default('Philips') }}">
           </div>
 
         </fieldset>

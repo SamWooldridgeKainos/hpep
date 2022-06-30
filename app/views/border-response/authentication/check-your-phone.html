@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your phone | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/border-response/authenticate" method="post" class="form">
+
+      <h1 class="govuk-heading-l">
+        Check your phone
+      </h1>
+
+      <p class="govuk-body">
+        We’ve sent you a text message with a security code.
+      </p>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="security-code">
+          Security code
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="security-code" name="security-code" type="text" autocomplete="one-time-code" pattern="[0-9]*" inputmode="numeric">
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+      <p class="govuk-body">
+        <a href="/border-response/authentication/request-new-security-code" class="govuk-link">Not received a text message?</a>
+      </p>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

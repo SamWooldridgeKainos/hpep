@@ -4,11 +4,24 @@
 Cookies
 {% endblock %}
 
+{% block beforeContent %}
+<div class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="#">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="#">Help</a>
+    </li>
+  </ol>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+    <!--<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
           Success
@@ -26,7 +39,7 @@ Cookies
             data-gem-track-click-module-started="true">Go back to the page you were looking at</a>
         </p>
       </div>
-    </div>
+    </div>-->
 
     <h1 class="govuk-heading-xl">
       Cookies

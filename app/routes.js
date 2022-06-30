@@ -3,6 +3,7 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+// Border response
 router.post('/border-response/messages/sms-response', function(req, res) {
 
   var response = req.session.data['response']
@@ -25,6 +26,19 @@ router.post('/border-response/confirmation', function(req, res) {
     res.redirect('/border-response/confirmation/compliant')
   } else {
     res.redirect('/border-response/confirmation/non-compliant')
+  }
+
+})
+
+// Personal details
+router.post('/personal-details/proxy/answer', function(req, res) {
+
+  var compliance = req.session.data['proxy']
+
+  if (compliance == "Yes") {
+    res.redirect('/personal-details/contact-details/contact-preference')
+  } else {
+    res.redirect('/personal-details/proxy/name')
   }
 
 })

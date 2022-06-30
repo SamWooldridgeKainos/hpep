@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your name? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/personal-details/proxy/why" accept-charset="UTF-8" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Personal details</span>
+            <h1 class="govuk-fieldset__heading">
+              What is your name?
+            </h1>
+          </legend>
+
+          <div class="govuk-hint">
+            Enter your own name, <strong>not</strong> the name of the person you are completing this for.
+          </div>
+
+          <div class="govuk-form-group">
+            <label for="given-name" class="govuk-label">
+              Given name(s)
+            </label>
+            <input id="proxy-given-names" class="govuk-input govuk-!-width-two-thirds" autocomplete="given-name" spell_check="false" type="text" name="proxy-given-names" value="{{ data['proxy-given-names'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label for="family-name" class="govuk-label">
+              Family name
+            </label>
+            <input id="proxy-family-name" class="govuk-input govuk-!-width-two-thirds" autocomplete="family-name" spell_check="false" type="text" name="proxy-family-name" value="{{ data['proxy-family-name'] }}">
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

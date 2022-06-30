@@ -1,20 +1,20 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Check your answers | NHS Test and Trace
+Check your answers | UK Health Security Agency
 {% endblock %}
 
 {% block beforeContent %}
-<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+<!--<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>-->
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
-
-    <h2 class="govuk-heading-m">Personal details</h2>
+    <h1 class="govuk-heading-l">
+      Check your answers before submitting your information
+    </h1>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
@@ -22,7 +22,7 @@ Check your answers | NHS Test and Trace
           Name
         </dt>
         <dd class="govuk-summary-list__value">
-          Sarah Philips
+          {{ data['positive-case-given-names'] | default('Sarah') }} {{ data['positive-case-family-name'] | default('Philips') }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="#">
@@ -32,20 +32,99 @@ Check your answers | NHS Test and Trace
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
+          Are you the person?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> if you are person</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Person completing information
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Fred Philips
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> person completing information</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Reason completing information
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Individual is under 18 years old
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> reason completing information</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact preference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">Email</p>
+          <p class="govuk-body">sarah.philips@example.com</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> contact preference</span>
+          </a>
+        </dd>
+      </div>
+      <!--<div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          sarah.phillips@example.com
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> email address</span>
+          </a>
+        </dd>
+      </div>-->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          07700 900457
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> phone number</span>
+          </a>
+        </dd>
+      </div>
+      <!--<div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
           Date of birth
         </dt>
         <dd class="govuk-summary-list__value">
-          5 January 1978
+          5 January 2006
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="#">
             Change<span class="govuk-visually-hidden"> date of birth</span>
           </a>
         </dd>
-      </div>
-      <div class="govuk-summary-list__row">
+      </div>-->
+      <!--<div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Address
+          Address on health record
         </dt>
         <dd class="govuk-summary-list__value">
           72 Guild Street<br>London<br>SE23 6FH
@@ -55,90 +134,36 @@ Check your answers | NHS Test and Trace
             Change<span class="govuk-visually-hidden"> address</span>
           </a>
         </dd>
-      </div>
+      </div>-->
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Contact details
+          Occupation
         </dt>
         <dd class="govuk-summary-list__value">
-          <p class="govuk-body">07700 900457</p>
-          <p class="govuk-body">sarah.phillips@example.com</p>
+          Student
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> contact details</span>
+            Change<span class="govuk-visually-hidden"> occupation</span>
           </a>
         </dd>
       </div>
     </dl>
 
-    <h2 class="govuk-heading-m">Application details</h2>
+    <h2 class="govuk-heading-m">
+      Now submit your information
+    </h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Previous application number
-        </dt>
-        <dd class="govuk-summary-list__value">
-          502135326
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> previous application number</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Licence type
-        </dt>
-        <dd class="govuk-summary-list__value">
-          For personal use
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> licence type</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Home address
-        </dt>
-        <dd class="govuk-summary-list__value">
-          72 Guild Street<br>London<br>SE23 6FH
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> home address</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Licence period
-        </dt>
-        <dd class="govuk-summary-list__value">
-          Valid for 6 months
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> licence period</span>
-          </a>
-        </dd>
-      </div>
-    </dl>
-
-    <h2 class="govuk-heading-m">Now send your application</h2>
-
-    <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+    <p class="govuk-body">
+      By submitting this information, you confirm that to the best of your knowledge, these details are correct. Once submitted you cannot edit details.
+    </p>
 
     <form action="/form-handler" method="post" novalidate>
 
       <input type="hidden" name="answers-checked" value="true">
 
       <button class="govuk-button" data-module="govuk-button">
-        Accept and send
+        Submit your information
       </button>
 
     </form>

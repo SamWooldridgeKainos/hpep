@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Why are you completing this person's information? | NHS Test and Trace
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/case/about-you/personal-details/proxy-why" accept-charset="UTF-8" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Personal details</span>
+            <h1 class="govuk-fieldset__heading">
+              Why are you completing <span class="govuk-highlight">{{ data['positive-case-given-names'] | default('Sarah') }} {{ data['positive-case-family-name'] | default('Philips') }}</span>'s information?
+            </h1>
+          </legend>
+
+          <div class="govuk-hint" id="contact-hint">
+            Select all that apply.
+          </div>
+
+          <div class="govuk-checkboxes govuk-checkboxes--conditional" data-module="govuk-checkboxes">
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-1" name="why-proxy" type="checkbox" value="email" data-checkbox-exclusive-group="reason-list">
+              <label class="govuk-label govuk-checkboxes__label" for="contact-1">
+                I'm their parent or legal guardian
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-2" name="why-proxy" type="checkbox" value="phone" data-checkbox-exclusive-group="reason-list">
+              <label class="govuk-label govuk-checkboxes__label" for="contact-2">
+                I'm their carer
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-3" name="why-proxy" type="checkbox" value="email" data-checkbox-exclusive-group="reason-list">
+              <label class="govuk-label govuk-checkboxes__label" for="contact-3">
+                I have the authority to make decisions for them under the Mental Capacity Act
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-4" name="why-proxy" type="checkbox" value="phone" data-checkbox-exclusive-group="reason-list">
+              <label class="govuk-label govuk-checkboxes__label" for="contact-4">
+                They cannot complete this information without help
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-5" name="why-proxy" type="checkbox" value="text" aria-controls="conditional-contact-5" aria-expanded="false" data-checkbox-exclusive-group="reason-list">
+              <label class="govuk-label govuk-checkboxes__label" for="contact-5">
+                Another reason
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-5">
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="mobile">
+                  Reason
+                </label>
+                <input class="govuk-input" id="mobile" name="mobile" type="text">
+              </div>
+
+            </div>
+
+          </div>
+        </fieldset>
+
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is the Mental Capacity Act?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          The Mental Capacity Act (MCA) supports people who do not have the mental capacity to make decisions about their own care. The MCA applies to people aged 16 or over in England and Wales.
+        </div>
+      </details>
+
+      <hr class="govuk-section-break govuk-section-break--m">
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

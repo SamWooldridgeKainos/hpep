@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are the last 3 digits of their passport number? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/border-response/authenticate" method="post" class="form">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label id="h1-content" class="govuk-label govuk-label--l" for="passport-number">
+            What are the last 3 digits of {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s passport number?
+          </label>
+        </h1>
+        <div id="passport-number-hint" class="govuk-hint">
+          We need to know this to confirm their identity.
+        </div>
+        <input class="govuk-input govuk-input--width-3" id="passport-number" name="passport-number" type="text" autocomplete="passport-number" pattern="[0-9]*" inputmode="numeric">
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}
