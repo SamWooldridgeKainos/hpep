@@ -12,40 +12,19 @@ You must quarantine | UK Health Security Agency
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds" id="grid-column-div">
 
-    <h1 class="govuk-heading-l" id="heading-h1">
+    <h1 class="govuk-heading-l" id="h1-content">
       Confirm your agreement to quarantine
     </h1>
-
-    <!--<dl class="govuk-summary-list">
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Name
-        </dt>
-        <dd class="govuk-summary-list__value">
-          Caroline Laurent
-        </dd>
-
-      </div>
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Passenger Locator Form reference
-        </dt>
-        <dd class="govuk-summary-list__value">
-          UKVI_5ZAA012345678
-        </dd>
-
-      </div>
-
-    </dl>-->
 
     <div class="govuk-warning-text">
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-warning-text__assistive">Important: </span>
         <p>
-          It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
+          It is a legal requirement for you to quarantine until <strong>{{ data["quarantine-end-date"] | default("Thursday 2 June") }} (including this date)</strong>.
+        </p>
+        <p>
+          If you are completing this form for <strong>{{ data["traveller-given-names"] | default("Sarah") }} {{ data["traveller-family-name"] | default("Philips") }}</strong>, you will be confirming that they agree to quarantine.
         </p>
       </strong>
     </div>
@@ -63,7 +42,7 @@ You must quarantine | UK Health Security Agency
       <li>do not leave quarantine for any reason (except if you're attending your health test, posting a self-administered test, or if you're at risk of harm)</li>
     </ul>
 
-    <hr class="govuk-section-break govuk-section-break--m">
+    <hr class="govuk-section-break govuk-section-break--l">
 
     <form name="myForm" id="myForm" action="/border-response/confirmation" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
 
@@ -83,7 +62,7 @@ You must quarantine | UK Health Security Agency
         </div>
       </div>
 
-      <button class="govuk-button" type="submit">
+      <button class="govuk-button" data-module="govuk-button">
         Continue
       </button>
 

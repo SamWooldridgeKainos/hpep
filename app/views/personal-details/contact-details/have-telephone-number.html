@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have a telephone number? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form name="myForm" action="/personal-details/occupation" onsubmit="return validateForm()" method="post" required>
+
+      <span class="govuk-caption-l">Personal details</span>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 id="h1-content" class="govuk-fieldset__heading">
+              Do you have a telephone number?
+            </h1>
+          </legend>
+          <div class="govuk-hint">
+            A mobile number is preferred
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-1">
+              <label class="govuk-label govuk-radios__label" for="contact-2">
+                Yes
+              </label>
+            </div>
+
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-1">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-phone">
+                  Telephone number
+                </label>
+                <div id="telephone-number-hint" class="govuk-hint">
+                  For international numbers include the country code
+                </div>
+                <input class="govuk-input govuk-input--width-20" id="contact-by-phone" name="contact-by-phone" type="tel" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text">
+              <label id="no-label-content" class="govuk-label govuk-radios__label" for="contact-3">
+                No, I do not have a telephone number
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  window.onload = function() {
+    // Proxy check
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No") {
+      document.getElementById("h1-content").innerHTML =
+        'Does {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }} have a telephone number?';
+        document.getElementById("no-label-content").innerHTML =
+          'No, they do not have a telephone number';
+      return false;
+    }
+  }
+
+  // Errors
+  function validateForm() {
+    var knowPhone = document.forms["myForm"]["have-telephone-number"].value;
+
+    if (knowPhone == "" || knowPhone == null) {
+
+      // Error form group styling
+      var formGroup = document.getElementById("error-form-group");
+      formGroup.classList.add("govuk-form-group--error");
+
+      // Error message
+      document.getElementById("know-telephone-error-message").innerHTML = '<span class="govuk-visually-hidden">Error:</span> Select yes if you know their telephone number';
+
+      // Error summary
+      var errorSummary = document.getElementById("error-summary");
+      errorSummary.innerHTML =
+        '<h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a href="#know-telephone-error-message">Select yes if you know their telephone number</a></li></ul></div>';
+      errorSummary.style.display = 'block';
+      errorSummary.focus();
+      return false;
+    }
+  }
+</script>
+{% endblock %}

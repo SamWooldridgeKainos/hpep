@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your telephone number? | UK Health Security Agency
+What is your occupation? | UK Health Security Agency
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,19 +12,16 @@ What is your telephone number? | UK Health Security Agency
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/personal-details/occupation" accept-charset="UTF-8" method="post">
+    <form action="/personal-details/contact-details/occupation" accept-charset="UTF-8" method="post">
 
       <span class="govuk-caption-l">Personal details</span>
       <div class="govuk-form-group">
         <h1 class="govuk-label-wrapper">
-          <label id="h1-content" class="govuk-label govuk-label--l" for="telephone-number">
-            What is your telephone number?
+          <label id="h1-content" class="govuk-label govuk-label--l" for="occupation">
+            What is your occupation?
           </label>
         </h1>
-        <div id="telephone-number-hint" class="govuk-hint">
-          For international numbers include the country code
-        </div>
-        <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" aria-describedby="telephone-number-hint" autocomplete="tel">
+        <input id="occupation" class="govuk-input govuk-!-width-three-quarters" aria-describedby="occupation-hint" autocomplete="email" spellcheck="false" type="email" value="" name="occupation">
       </div>
 
       <button class="govuk-button" data-module="govuk-button">
@@ -43,7 +40,7 @@ What is your telephone number? | UK Health Security Agency
 
     if (proxyValue == "No") {
       document.getElementById("h1-content").innerHTML =
-        'What is {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s telephone number?';
+        'What is {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s occupation?';
       return false;
     }
   }

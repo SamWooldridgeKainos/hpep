@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which of the following best describes your Mixed or Multiple ethnic groups background? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()" style="padding-left: 0;">Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-s">
+          Answer all questions as <span class="nhsuk-highlight">{{ data['confirmed-child-first-name'] }} {{ data['confirmed-child-last-name'] }}<!--Jacqueline Richardson--></span>
+        </h2>
+      </div>
+    </div>
+
+    <!--<div class="nhsuk-body" id="proxy-flash-message">
+      You're completing on behalf of Jacqueline Richardson - please respond to all questions as though you were them.
+    </div>-->
+
+    <form action="/case/about-you/personal-details/addresses/international/registered/fields/proxy" method="post" class="form">
+      <div class="nhsuk-form-group nhsuk-u-reading-width">
+        <fieldset class="nhsuk-fieldset">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Which of the following best describes your Mixed or Multiple ethnic groups background?
+            </h1>
+          </legend>
+
+          <div class="nhsuk-radios nhsuk-radios--conditional" data-module="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="ethnic-background-white-and-black-caribbean" name="ethnic-background" type="radio" value="White and Black Caribbean">
+              <label class="nhsuk-label nhsuk-radios__label" for="ethnic-background-white-and-black-caribbean">
+                White and Black Caribbean
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="ethnic-background-white-and-black-african" name="ethnic-background" type="radio" value="White and Black African">
+              <label class="nhsuk-label nhsuk-radios__label" for="ethnic-background-white-and-black-african">
+                White and Black African
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="ethnic-background-white-and-asian" name="ethnic-background" type="radio" value="White and Asian">
+              <label class="nhsuk-label nhsuk-radios__label" for="ethnic-background-white-and-asian">
+                White and Asian
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="ethnic-background-any-other-mixed" name="ethnic-background" type="radio" value="" aria-controls="conditional-ethnic-background-mixed" aria-expanded="false">
+              <label class="nhsuk-label nhsuk-radios__label" for="ethnic-background-any-other-mixed">
+                Any other Mixed or Multiple ethnic background
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-ethnic-background-mixed">
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="ethnic-background-mixed-other">
+                  How would you describe your background? (optional)
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="ethnic-background-mixed-other" name="ethnic-background-other" type="text">
+              </div>
+
+            </div>
+
+            <div class="nhsuk-radios__divider">
+              or
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="ethnic-background-pnts" name="ethnic-background" type="radio" value="Prefer not to say">
+              <label class="nhsuk-label nhsuk-radios__label nhsuk-label" for="ethnic-background-pnts">
+                Prefer not to say
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="nhsuk-details nhsuk-u-reading-width nhsuk-u-padding-bottom-4">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Why are we asking this?
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This helps us to understand how COVID-19 affects different groups of people.</p>
+        </div>
+      </details>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

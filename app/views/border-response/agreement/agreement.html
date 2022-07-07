@@ -1,11 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-You must quarantine | UK Health Security Agency
+Confirm your agreement to quarantine | UK Health Security Agency
 {% endblock %}
 
-{% block outerContent %}
-
+{% block beforeContent %}
 {% endblock %}
 
 {% block content %}
@@ -23,40 +22,19 @@ You must quarantine | UK Health Security Agency
       </div>
     </div>
 
-    <h1 class="govuk-heading-l" id="heading-h1">
+    <h1 class="govuk-heading-l" id="h1-content">
       Confirm your agreement to quarantine
     </h1>
-
-    <!--<dl class="govuk-summary-list">
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Name
-        </dt>
-        <dd class="govuk-summary-list__value">
-          Caroline Laurent
-        </dd>
-
-      </div>
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Passenger Locator Form reference
-        </dt>
-        <dd class="govuk-summary-list__value">
-          UKVI_5ZAA012345678
-        </dd>
-
-      </div>
-
-    </dl>-->
 
     <div class="govuk-warning-text">
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-warning-text__assistive">Important: </span>
         <p>
-          It is a legal requirement for you to quarantine until <strong>Thursday 2 June (including this date)</strong>.
+          It is a legal requirement for you to quarantine until <strong>{{ data["quarantine-end-date"] | default("Thursday 2 June") }} (including this date)</strong>.
+        </p>
+        <p>
+          If you are completing this form for <strong>{{ data["traveller-given-names"] | default("Sarah") }} {{ data["traveller-family-name"] | default("Philips") }}</strong>, you will be confirming that they agree to quarantine.
         </p>
       </strong>
     </div>
@@ -73,6 +51,8 @@ You must quarantine | UK Health Security Agency
       <li>do not allow any visitors to your accommodation, including hotel staff or friends and family (except if there is an emergency)</li>
       <li>do not leave quarantine for any reason (except if you're attending your health test, posting a self-administered test, or if you're at risk of harm)</li>
     </ul>
+
+    <hr class="govuk-section-break govuk-section-break--l">
 
     <div class="govuk-inset-text">
       <p>
@@ -117,8 +97,8 @@ You must quarantine | UK Health Security Agency
 
       </div>
 
-      <button class="govuk-button" type="submit">
-        Continue
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
       </button>
 
     </form>
@@ -154,7 +134,7 @@ You must quarantine | UK Health Security Agency
       var errorSummaryContent1 = document.getElementById("error-summary-content-1");
       errorSummaryContent1.innerHTML = '<a href="#error-1">Select yes if you agree to quarantine</a>';
 
-      // $('#heading-h1').prepend('<div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select yes if you agree to quarantine</a></li></ul></div></div>');
+      // $('#h1-content').prepend('<div class="govuk-error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select yes if you agree to quarantine</a></li></ul></div></div>');
 
       return false;
     }

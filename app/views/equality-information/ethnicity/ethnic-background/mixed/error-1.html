@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which of the following best describes your Mixed or Multiple ethnic groups background? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="govuk-back-link govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <a class="govuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()" style="padding-left: 0;">Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#blank-error">Select an ethnic background or ‘Prefer not to say’</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <form action="/contact/about-you/addresses/registered/fields/manual" method="post" class="form">
+      <div class="govuk-form-group govuk-form-group--error govuk-!-reading-width">
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Which of the following best describes your Mixed or Multiple ethnic groups background?
+            </h1>
+          </legend>
+
+          <span class="govuk-error-message" id="blank-error">
+            <span class="govuk-visually-hidden">Error: </span>Select an ethnic background or ‘Prefer not to say’
+          </span>
+
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-background-white-and-black-caribbean" name="ethnic-background" type="radio" value="White and Black Caribbean">
+              <label class="govuk-label govuk-radios__label" for="ethnic-background-white-and-black-caribbean">
+                White and Black Caribbean
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-background-white-and-black-african" name="ethnic-background" type="radio" value="White and Black African">
+              <label class="govuk-label govuk-radios__label" for="ethnic-background-white-and-black-african">
+                White and Black African
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-background-white-and-asian" name="ethnic-background" type="radio" value="White and Asian">
+              <label class="govuk-label govuk-radios__label" for="ethnic-background-white-and-asian">
+                White and Asian
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-background-any-other-mixed" name="ethnic-background" type="radio" value="" aria-controls="conditional-ethnic-background-mixed" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="ethnic-background-any-other-mixed">
+                Any other Mixed or Multiple ethnic background
+              </label>
+            </div>
+
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ethnic-background-mixed">
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="ethnic-background-mixed-other">
+                  How would you describe your background? (optional)
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="ethnic-background-mixed-other" name="ethnic-background-other" type="text">
+              </div>
+
+            </div>
+
+            <div class="govuk-radios__divider">
+              or
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-background-pnts" name="ethnic-background" type="radio" value="Prefer not to say">
+              <label class="govuk-label govuk-radios__label govuk-label" for="ethnic-background-pnts">
+                Prefer not to say
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="govuk-details govuk-!-reading-width">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Why are we asking this?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>This helps us to understand how COVID-19 affects different groups of people.</p>
+        </div>
+      </details>
+
+      <hr class="govuk-section-break govuk-section-break--m">
+
+      <button class="govuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

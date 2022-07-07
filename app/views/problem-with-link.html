@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+There is a problem with your link | UK Health Security Agency
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      There is a problem with your link
+    </h1>
+
+    <p class="govuk-body">
+      There are a few things you can check to try and fix this.
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>If we have sent you more than one invitation, make sure you have selected the link from our most recent message. Links from older messages will expire.</li>
+      <li>If you copied the URL and pasted it to your browser, make sure you copied the entire address.</li>
+      <li>If you clicked or selected the link from an email or text message, try it again.</li>
+      <!--<li>If you have already created a password, you can <a href="#" class="govuk-link">sign in</a>.</li>-->
+    </ul>
+
+    <p class="govuk-body">
+      If you still cannot open the link or use this service online, a member of the UK Health Security Agency team might call you soon. You'll know it's us when you see a call from the number 0300 013 5000. This number does not take incoming calls, so wait
+      for us to call you.
+    </p>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which of the following best describes your Mixed or Multiple ethnic groups background? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form name="myForm" id="myForm" action="/equality-information/ethnicity/ethnic-background" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+
+      <span class="govuk-caption-l">Equality information</span>
+      <div id="error-form-group" class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 id="h1-content" class="govuk-fieldset__heading">
+              Which of the following best describes your Mixed or Multiple ethnic groups background?
+            </h1>
+          </legend>
+
+          <div id="form-1" class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnicity-detail" name="ethnicity-detail" type="radio" value="white-black-caribbean">
+              <label class="govuk-label govuk-radios__label" for="ethnicity-detail">
+                White and Black Caribbean
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnicity-detail-2" name="ethnicity-detail" type="radio" value="white-black-african">
+              <label class="govuk-label govuk-radios__label" for="ethnicity-detail-2">
+                White and Black African
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnicity-detail-3" name="ethnicity-detail" type="radio" value="white-asian">
+              <label class="govuk-label govuk-radios__label" for="ethnicity-detail-3">
+                White and Asian
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnicity-detail-4" name="ethnicity-detail" type="radio" value="other" data-aria-controls="conditional-ethnicity-detail-4">
+              <label class="govuk-label govuk-radios__label" for="ethnicity-detail-4">
+                Any other Mixed or Multiple ethnic background
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ethnicity-detail-4">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="other-description">
+                  How would you describe your background? (optional)
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="other-description" name="other-description" type="text">
+              </div>
+            </div>
+
+            <div class="govuk-radios__divider">
+              or
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnicity-detail-6" name="ethnicity-detail" type="radio" value="skip">
+              <label class="govuk-label govuk-radios__label" for="ethnicity-detail-6">
+                Prefer not to say
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    // Proxy check
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No") {
+      $('#h1-content').html('Which of the following best describes {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s Mixed or Multiple ethnic groups background?');
+      return false;
+    }
+  }
+
+  // Errors
+  function validateForm() {
+    var formOptions = document.forms["myForm"]["ethnicity-detail"].value;
+
+    // Error form group styling
+    $('#error-form-group').addClass('govuk-form-group--error');
+
+    // Error message styling
+    $('#form-1').prepend('<span class="govuk-error-message" id="error-1"></span>');
+
+    // Error summary styling
+    $('#myForm').prepend(
+      '<div id="error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary"><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul id="error-summary-1" class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select an ethnic background or &#39;Prefer not to say&#39;</a></li></ul></div></div>'
+    );
+
+    if (formOptions == "" || formOptions == null) {
+
+      // Error message content
+      $('#error-1').html('<span class="govuk-visually-hidden">Error:</span> Select an ethnic background or &#39;Prefer not to say&#39;');
+
+      // Error summary content
+      $('#error-summary-1').html('<li><a href="#error-1">Select an ethnic background or &#39;Prefer not to say&#39;</a></li>');
+
+      return false;
+    }
+  }
+</script>
+{% endblock %}

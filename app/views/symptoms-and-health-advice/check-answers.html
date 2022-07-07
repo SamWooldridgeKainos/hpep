@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check answers | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Symptoms and health advice</span>
+    <h1 class="govuk-heading-l">
+      Check your answers before submitting your information
+    </h1>
+
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Your symptoms
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p>New, continuous cough</p>
+          <p>High temperature or fever<br><span style="color: #4c6272">(You feel hot to touch on your chest or back)</span></p>
+          <p>Sore throat</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="#">
+            Change<span class="govuk-visually-hidden"> your symptoms</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Symptoms start date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Sunday 27 June
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="#" class="govuk-link govuk-link--no-visited-state">
+            Change<span class="govuk-visually-hidden"> symptoms start date</span>
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+
+    <h2 class="govuk-heading-m">
+      Now submit your information
+    </h2>
+
+    <p class="govuk-body">
+      By submitting this information, you confirm that to the best of your knowledge, these details are correct. Once submitted you cannot edit details.
+    </p>
+
+    <form action="/form-handler" method="post" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <button class="govuk-button" data-module="govuk-button">
+        Submit your information
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

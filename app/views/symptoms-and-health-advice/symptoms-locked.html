@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have any of these symptoms? | NHS Test and Trace
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+  <a class="nhsuk-back-link__link" href="#" data-turbolinks="false" onclick="goBack()" style="padding-left: 0;">Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <form action="summary" accept-charset="UTF-8" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="episode-had-symptoms-hint">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Do you have any of these symptoms?
+            </h1>
+          </legend>
+
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-card__heading">
+            You can no longer change your symptoms
+          </h3>
+          <p class="nhsuk-card__description">
+            We use this information to make sure we give you the right health advice. We also use it to start the contact tracing process. Doing this as soon as possible helps to stop the spread of COVID-19.
+          </p>
+          <p class="nhsuk-card__description">
+            If you have a question or concern, <a href="#">call 119</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="nhsuk-u-reading-width">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Your symptoms
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <p>New, continuous cough</p>
+              <p>High temperature or fever<br><span style="color: #4c6272">(You feel hot to touch on your chest or back)</span></p>
+              <p>Sore throat</p>
+            </dd>
+          </div>
+
+        </dl>
+
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+  </div>
+</div>
+
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,188 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have any of these symptoms? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/symptoms-and-health-advice/symptoms-start-date" accept-charset="UTF-8" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="episode-had-symptoms-hint">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Do you have any of these symptoms?
+            </h1>
+          </legend>
+
+          <div class="govuk-hint" id="episode-had-symptoms-hint">
+            Select all the symptoms you have.
+          </div>
+
+          <div class="govuk-checkboxes govuk-checkboxes--conditional" data-module="govuk-checkboxes">
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-cough-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[cough]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-cough-true-field" class="govuk-label govuk-checkboxes__label">
+                New, continuous cough
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-fever-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[fever]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-fever-true-field" class="govuk-label govuk-checkboxes__label">
+                High temperature or fever
+              </label>
+              <div class="govuk-hint govuk-checkboxes__hint">
+                You feel hot to touch on your chest or back
+              </div>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-loss-of-smell-or-taste-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[loss_of_smell_or_taste]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-loss-of-smell-or-taste-true-field" class="govuk-label govuk-checkboxes__label">
+                Loss or change to your sense of smell or taste
+              </label>
+              <div class="govuk-hint govuk-checkboxes__hint">
+                You cannot smell or taste anything, or things smell or taste different from normal
+              </div>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-shortness-of-breath-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[shortness_of_breath]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-shortness-of-breath-true-field" class="govuk-label govuk-checkboxes__label">
+                Shortness of breath
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-muscle-ache-or-joint-pain-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[muscle_ache_or_joint_pain]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-muscle-ache-or-joint-pain-true-field" class="govuk-label govuk-checkboxes__label">
+                Muscle ache or joint pain
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-sneezing-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[sneezing]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-sneezing-true-field" class="govuk-label govuk-checkboxes__label">
+                Sneezing
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-sore-throat-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[sore_throat]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-sore-throat-true-field" class="govuk-label govuk-checkboxes__label">
+                Sore throat
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-runny-nose-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[runny_nose]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-runny-nose-true-field" class="govuk-label govuk-checkboxes__label">
+                Runny nose
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-headache-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[headache]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-headache-true-field" class="govuk-label govuk-checkboxes__label">
+                Headache
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-red-or-irritated-eye-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[red_or_irritated_eye]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-red-or-irritated-eye-true-field" class="govuk-label govuk-checkboxes__label">
+                Red or irritated eye
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-loss-of-appetite-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[loss_of_appetite]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-loss-of-appetite-true-field" class="govuk-label govuk-checkboxes__label">
+                Loss of appetite
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-nausea-or-vomiting-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[nausea_or_vomiting]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-nausea-or-vomiting-true-field" class="govuk-label govuk-checkboxes__label">
+                Feeling sick (nausea) or being sick (vomiting)
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-diarrhoea-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[diarrhoea]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-diarrhoea-true-field" class="govuk-label govuk-checkboxes__label">
+                Diarrhoea
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-altered-consciousness-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[altered_consciousness]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-altered-consciousness-true-field" class="govuk-label govuk-checkboxes__label">
+                Confusion or disorientation
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-fatigue-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[fatigue]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-fatigue-true-field" class="govuk-label govuk-checkboxes__label">
+                Feeling very tired
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-rash-true-field" class="govuk-checkboxes__input" type="checkbox" value="true" name="episode[rash]" data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-rash-true-field" class="govuk-label govuk-checkboxes__label">
+                Rash
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__divider">
+              or
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input id="episode-had-no-symptoms-true-field" class="govuk-checkboxes__input" type="checkbox" value="none" name="episode[had_no_symptoms]" data-checkbox-exclusive data-checkbox-exclusive-group="symptoms-list">
+              <label for="episode-had-no-symptoms-true-field" class="govuk-label govuk-checkboxes__label">
+                No, I do not have any of these symptoms
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  window.onload = function() {
+    // Proxy check
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No") {
+      document.getElementById("h1-content").innerHTML =
+        'Does {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }} have any of these symptoms?';
+      return false;
+    }
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Did you arrive in the UK? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/arrival-date/last-10-days" accept-charset="UTF-8" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Did you arrive in the UK between Monday 20 June and today?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input id="episode-proxy-present-false-field" class="govuk-radios__input" type="radio" value="Yes" name="proxy">
+              <label for="episode-proxy-present-false-field" class="govuk-label govuk-radios__label">
+                Yes
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input id="episode-proxy-present-true-field" class="govuk-radios__input" type="radio" value="No" name="proxy">
+              <label for="episode-proxy-present-true-field" class="govuk-label govuk-radios__label">
+                No
+              </label>
+            </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  window.onload = function() {
+    // Proxy check
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No") {
+      document.getElementById("h1-content").innerHTML =
+        'Did {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }} arrive in the UK between 20 June and 30 June?';
+      return false;
+    }
+  }
+</script>
+{% endblock %}

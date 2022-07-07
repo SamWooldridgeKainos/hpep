@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your ethnic group? | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form name="myForm" id="myForm" action="/equality-information/ethnicity/" onsubmit="return validateForm()" accept-charset="UTF-8" method="post" required>
+
+      <span class="govuk-caption-l">Equality information</span>
+      <div id="error-form-group" class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 id="h1-content" class="govuk-fieldset__heading">
+              What is your ethnic group?
+            </h1>
+          </legend>
+
+          <div id="form-1" class="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-white" name="ethnic-group" type="radio" value="White" aria-describedby="ethnic-white-hint">
+              <label class="govuk-label govuk-radios__label" for="ethnic-white">
+                White
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-mixed" name="ethnic-group" type="radio" value="Mixed or multiple ethnic groups" aria-describedby="ethnic-mixed-hint">
+              <label class="govuk-label govuk-radios__label" for="ethnic-mixed">
+                Mixed or multiple ethnic groups
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-asian" name="ethnic-group" type="radio" value="Asian or Asian British" aria-describedby="ethnic-asian-hint">
+              <label class="govuk-label govuk-radios__label" for="ethnic-asian">
+                Asian or Asian British
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-black" name="ethnic-group" type="radio" value="Black, African, Caribbean or Black British" aria-describedby="ethnic-black-hint">
+              <label class="govuk-label govuk-radios__label" for="ethnic-black">
+                Black, African, Caribbean or Black British
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-other" name="ethnic-group" type="radio" value="Other ethnic group" aria-describedby="ethnic-other-hint">
+              <label class="govuk-label govuk-radios__label" for="ethnic-other">
+                Other ethnic group
+              </label>
+            </div>
+
+            <div class="govuk-radios__divider">
+              or
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="ethnic-pnts" name="ethnic-group" type="radio" value="Prefer not to say">
+              <label class="govuk-label govuk-radios__label govuk-label" for="ethnic-pnts">
+                Prefer not to say
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  window.onload = function() {
+    // Proxy check
+    var proxyValue = "{{ data['proxy'] }}";
+
+    if (proxyValue == "No") {
+      document.getElementById("h1-content").innerHTML =
+        'What is {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s ethnic group?';
+      return false;
+    }
+  }
+
+  // Errors
+  function validateForm() {
+    var formOptions = document.forms["myForm"]["ethnic-group"].value;
+
+    if (formOptions == "" || formOptions == null) {
+
+      // Error form group styling
+      $('#error-form-group').addClass('govuk-form-group--error');
+
+      // Error message
+      $('#form-1').prepend('<span class="govuk-error-message" id="error-1" hidden><span class="govuk-visually-hidden">Error:</span> Select an ethnic group or &#39;Prefer not to say&#39;</span>');
+
+      // Error summary
+      $('#myForm').prepend('<div id="error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" autofocus><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select an ethnic group or &#39;Prefer not to say&#39;</a></li></ul></div></div>');
+
+      return false;
+    }
+  }
+</script>
+{% endblock %}

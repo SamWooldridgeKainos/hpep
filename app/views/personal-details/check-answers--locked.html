@@ -5,7 +5,7 @@ Check your answers | UK Health Security Agency
 {% endblock %}
 
 {% block beforeContent %}
-<!--<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>-->
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@ Check your answers | UK Health Security Agency
 
     <span class="govuk-caption-l">Personal details</span>
     <h1 id="h1-content" class="govuk-heading-l">
-      Check your answers before submitting your information
+      Your submitted answers
     </h1>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -25,11 +25,6 @@ Check your answers | UK Health Security Agency
         <dd class="govuk-summary-list__value">
           {{ data['positive-case-given-names'] | default('Sarah') }} {{ data['positive-case-family-name'] | default('Philips') }}
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> name</span>
-          </a>
-        </dd>
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -37,11 +32,6 @@ Check your answers | UK Health Security Agency
         </dt>
         <dd class="govuk-summary-list__value">
           No
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> if you are person</span>
-          </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -51,11 +41,6 @@ Check your answers | UK Health Security Agency
         <dd class="govuk-summary-list__value">
           Fred Philips
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> person completing information</span>
-          </a>
-        </dd>
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -63,11 +48,6 @@ Check your answers | UK Health Security Agency
         </dt>
         <dd class="govuk-summary-list__value">
           Individual is under 18 years old
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> reason completing information</span>
-          </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -78,11 +58,6 @@ Check your answers | UK Health Security Agency
           <p class="govuk-body">Email</p>
           <p class="govuk-body">sarah.philips@example.com</p>
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> contact preference</span>
-          </a>
-        </dd>
       </div>
       <!--<div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -90,11 +65,6 @@ Check your answers | UK Health Security Agency
         </dt>
         <dd class="govuk-summary-list__value">
           sarah.phillips@example.com
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> email address</span>
-          </a>
         </dd>
       </div>-->
       <div class="govuk-summary-list__row">
@@ -104,11 +74,6 @@ Check your answers | UK Health Security Agency
         <dd class="govuk-summary-list__value">
           07700 900457
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> phone number</span>
-          </a>
-        </dd>
       </div>
       <!--<div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -116,11 +81,6 @@ Check your answers | UK Health Security Agency
         </dt>
         <dd class="govuk-summary-list__value">
           5 January 2006
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> date of birth</span>
-          </a>
         </dd>
       </div>-->
       <!--<div class="govuk-summary-list__row">
@@ -130,11 +90,6 @@ Check your answers | UK Health Security Agency
         <dd class="govuk-summary-list__value">
           72 Guild Street<br>London<br>SE23 6FH
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> address</span>
-          </a>
-        </dd>
       </div>-->
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -143,45 +98,13 @@ Check your answers | UK Health Security Agency
         <dd class="govuk-summary-list__value">
           Student
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">
-            Change<span class="govuk-visually-hidden"> occupation</span>
-          </a>
-        </dd>
       </div>
     </dl>
-
-    <h2 class="govuk-heading-m">
-      Now submit your information
-    </h2>
-
-    <p class="govuk-body">
-      By submitting this information, you confirm that to the best of your knowledge, these details are correct. Once submitted you cannot edit details.
-    </p>
-
-    <form action="/form-handler" method="post" novalidate>
-
-      <input type="hidden" name="answers-checked" value="true">
-
-      <button class="govuk-button" data-module="govuk-button">
-        Submit your information
-      </button>
-
-    </form>
 
   </div>
 </div>
 
 <script>
-  window.onload = function() {
-    // Proxy check
-    var proxyValue = "{{ data['proxy'] }}";
 
-    if (proxyValue == "No") {
-      document.getElementById("h1-content").innerHTML =
-        'Check your answers before submitting {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s information';
-      return false;
-    }
-  }
 </script>
 {% endblock %}

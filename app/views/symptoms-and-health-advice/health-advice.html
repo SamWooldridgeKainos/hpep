@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Health advice | UK Health Security Agency
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="goBack()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Symptoms and health advice</span>
+    <h1 class="govuk-heading-l">
+      Health advice
+    </h1>
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Important: </span>
+        <p>
+          It is your legal duty to stay at home and self-isolate. This is to keep you and others safe.
+        </p>
+        <p>
+          If you are the parent or guardian of a child under 18 who tested positive for COVID-19, you are responsible for making sure they self-isolate.
+        </p>
+        <p>
+          The last day of your 10-day self-isolation is <strong>Wednesday 2 February (including this date)</strong>.
+        </p>
+        <p>
+          You can begin taking lateral flow tests from day 5 in your self-isolation period. This is to check if you can end self-isolation early.
+        </p>
+      </strong>
+    </div>
+
+    <h2 class="govuk-heading-m">
+      Leaving self-isolation early
+    </h2>
+    <p class="govuk-body">
+      If you have a negative lateral flow test result for 2 days in a row, and do not have a high temperature, you can stop testing and leave self-isolation early. Do not begin testing before day 5 of your self-isolation period.
+    </p>
+    <p class="govuk-body">
+      While you test positive, or if you have a high temperature, continue to self-isolate until <strong>Wednesday 2 February (including this date)</strong>. You do not need to continue testing after this date.
+    </p>
+
+    <p class="govuk-body">Do:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>tell your employer about your isolation period (this is a legal requirement), and get an isolation note if they request one</li>
+      <li>read the essential advice and guidance about how to self-isolate</li>
+      <li>find out what practical, financial and mental health support is available to help while you self-isolate</li>
+      <li>if you took a rapid lateral flow test, take a PCR test within 2 days to confirm the result</li>
+    </ul>
+    <p class="govuk-body">
+      We will give you links to advice and support after you've completed your Test and Trace information.
+    </p>
+
+    <p class="govuk-body">Don&#39;t:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>do not go to your place of work or education</li>
+      <li>do not go to a GP surgery or hospital (in a medical emergency, phone 999)</li>
+      <li>do not go to indoor or outdoor public areas, like shops or parks</li>
+      <li>do not use public transport or taxis</li>
+    </ul>
+
+    <form action="/case/about-you/advice-and-support/support/support" accept-charset="UTF-8" method="post">
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}
