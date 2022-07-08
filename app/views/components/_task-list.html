@@ -1,0 +1,57 @@
+{% from 'govuk/components/tag/macro.njk' import govukTag %}
+
+{% macro taskListItem(params) %}
+  {% if params.status === 'completed' %}
+    {% set tagColourClass = '' %}
+  {% elif params.status === 'in_progress' %}
+    {% set tagColourClass = 'govuk-tag--blue' %}
+  {% else %}
+    {% set tagColourClass = 'govuk-tag--grey' %}
+  {% endif %}
+
+  <li class="app-task-list__item">
+    <span class="app-task-list__task-name">
+      {% if params.href %}
+        <a href="{{ params.href }}" aria-describedby="{{ params.title | idify }}">
+          {{ params.title }}
+        </a>
+      {% else %}
+        {{ params.title }}
+      {% endif %}
+    </span>
+    {{ govukTag ({
+      text: params.status | sentence,
+      classes: 'app-task-list__tag ' + tagColourClass,
+      attributes: {
+        id: params.title | idify
+      }
+    }) }}
+  </li>
+{% endmacro %}
+
+{% macro taskListSection(params) %}
+  <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">{{ params.number }}. </span> {{ params.title }}
+    </h2>
+    <ul class="app-task-list__items">
+      {% for task in params.tasks %}
+        {{ taskListItem(task) }}
+      {% endfor %}
+    </ul>
+  </li>
+{% endmacro %}
+
+{% macro taskList(sections) %}
+{% set sectionCounter = 0 %}
+<ol class="app-task-list">
+  {% for section in sections %}
+    {% set sectionCounter = sectionCounter + 1 %}
+    {{ taskListSection({
+      title: section.title,
+      number: sectionCounter,
+      tasks: section.tasks
+    }) }}
+  {% endfor %}
+</ol>
+{% endmacro %}

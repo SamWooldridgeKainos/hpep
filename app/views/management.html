@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Management
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Management
+    </h1>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">
+      Actions
+    </h2>
+    <ul class="govuk-list">
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Search Individuals
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Search by Priority Fields and Status
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Manage Postcode Areas
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Manage Staff Members
+      </a></li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Import / Export
+    </h2>
+    <ul class="govuk-list">
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Batch-create individuals' accounts
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Batch-create postcode areas
+      </a></li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Queues
+    </h2>
+    <ul class="govuk-list">
+      <li><a href="#" class="govuk-link--no-visited-state">
+        App Integration Queue Progress
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Daily Contact Testing Queue Progress
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Rescind Request Queue Progress
+      </a></li>
+    </ul>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m">
+      Available reports
+    </h2>
+    <ul class="govuk-list">
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Escalated to Tier 1 (CSV)
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Auto-invited
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        In Progress
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Non-England
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Non-UK
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Uncontactable
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Follow up failed
+      </a></li>
+      <li><a href="#" class="govuk-link--no-visited-state">
+        Call Centre rejected
+      </a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

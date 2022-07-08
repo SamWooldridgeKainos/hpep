@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Who visited you?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Who visited you?
+    </h1>
+
+    <form action="/accommodation/visitors" method="post" class="form">
+      {{ govukInput({
+        id: 'visitor-name',
+        label: { text: 'Visitor name' },
+        name: 'visitorName',
+        value: data.visitorName,
+        classes: 'govuk-u-width-one-half'
+      }) }}
+
+      {{ govukInput({
+        id: 'visitors-submitted',
+        type: 'hidden',
+        name: 'visitorsSubmitted',
+        value: 'true'
+      }) }}
+
+      {{ govukButton({ text: 'Continue' }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

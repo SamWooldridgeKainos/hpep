@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Journey Select
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Journey Select
+    </h1>
+
+    <form action="/switch-journey" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: 'journey',
+        name: 'journey',
+        hint: ({ text: "Select which journey you'd like to switch to" }),
+        items: journeys
+      }) }}
+
+      {{ govukButton({ text: "Submit" }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

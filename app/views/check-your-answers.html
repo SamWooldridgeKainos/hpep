@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Check your answers
+    </h1>
+
+    {% for summary in summaries %}
+
+      {% if summary.heading %}
+        <h2 class="govuk-heading-l">
+          {{ summary.heading }}
+        </h2>
+      {% endif %}
+
+      {{ govukSummaryList ({
+        rows: summary.rows | govukSummary
+      }) }}
+
+    {% endfor %}
+
+    {{ govukButton({ text: 'Continue', href: '/' }) }}
+  </div>
+</div>
+{% endblock %}

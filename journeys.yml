@@ -1,0 +1,23 @@
+---
+default_journey: covid_19_case
+
+journeys:
+  covid_19_case:
+    about_you:
+      - personal_details:
+        - confirm_name
+        - proxy_details
+        - confirm_email
+        - confirm_phone_number
+    where_you_live:
+      - accommodation_type
+      - who_you_lived_with
+      - visitors
+  avian_flu:
+    about_you:
+      - personal_details:
+        - symptoms_and_advice
+        - equality_information
+    equality_information:
+      - equality_information:
+        - equality_information

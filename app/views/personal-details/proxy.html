@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Proxy details
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Are you {{ data | fullName }}?
+    </h1>
+
+    <form action="/personal-details/proxy" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: 'isProxy',
+        name: 'isProxy',
+        items: [
+          { value: 'yes', text: 'Yes', checked: checked('isProxy',  'yes') },
+          { value: 'no', text: 'No', checked: checked('isProxy',  'no') }
+        ]
+      }) }}
+
+      {{ govukButton({ text: 'Continue' }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

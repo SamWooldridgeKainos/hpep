@@ -45,11 +45,14 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container",
+    navigation: data.userType | navbarLinks(staffPreSignIn)
   }) }}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+
+{% set journeyLabel = 'Switch Journey (Currently viewing ' + (currentJourney | sentence) + ')' %}
 
 {% if useAutoStoreData %}
   {% block footer %}
@@ -57,24 +60,28 @@
       meta: {
         items: [
           {
-            href: "/index",
-            text: "Prototypes index"
+            href: '/help/privacy-notice',
+            text: 'Privacy Notice'
+          },
+          {
+            href: '/help/cookies',
+            text: 'Cookies'
+          },
+          {
+            href: '/help/accessibility-statement',
+            text: 'Accessibility statement'
+          },
+          {
+            href: '/switch-journey',
+            text: journeyLabel
+          },
+          {
+            href: "https://govuk-prototype-kit.herokuapp.com/",
+            text: "GOV.UK Prototype Kit " + releaseVersion
           },
           {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
-          },
-          {
-            href: "/privacy",
-            text: "Privacy notice"
-          },
-          {
-            href: "/cookies",
-            text: "Cookies"
-          },
-          {
-            href: "/accessibility-statement",
-            text: "Accessibility statement"
           }
         ],
         visuallyHiddenTitle: "Footer links"

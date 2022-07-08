@@ -1,0 +1,45 @@
+// ==========================================================================
+// GLOBAL STACK MESSAGE
+// ==========================================================================
+
+#global-stack-message {
+  background-color: yellow;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 5px dashed black;
+  border-width: 5px 0;
+}
+
+#global-stack-message .outer-block {
+  margin: 0 auto;
+  width: auto;
+  max-width: 1020px;
+}
+
+#global-stack-message .inner-block {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 641px) {
+  #global-stack-message .inner-block {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+#global-stack-message p {
+  font-family: "nta", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+  text-transform: none;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  #global-stack-message p {
+    font-size: 14px;
+    line-height: 1.14286;
+  }
+}

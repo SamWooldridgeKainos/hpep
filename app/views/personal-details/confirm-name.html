@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Confirm the name of the person who tested positive
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Confirm the name of the person who tested positive
+    </h1>
+
+    {{ govukWarningText({
+      text: 'Help us match the right record',
+      iconFallbackText: 'Warning'
+    }) }}
+
+    {{ govukInsetText({
+      text: 'Make sure the name of the person who tested positive is exactly as it appears on their health record. This helps us to identify them correctly.'
+    }) }}
+
+    <form action="/personal-details/confirm-name" method="post" class="form">
+      {{ govukInput({
+        label: { text: 'First name' },
+        name: 'firstName',
+        value: data.firstName,
+        classes: 'govuk-!-width-one-half'
+      }) }}
+
+      {{ govukInput({
+        label: { text: 'Last name' },
+        name: 'lastName',
+        value: data.lastName,
+        classes: 'govuk-!-width-one-half'
+      }) }}
+
+      {{ govukButton({ text: 'Continue' }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

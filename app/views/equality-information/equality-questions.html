@@ -12,21 +12,20 @@ Do you want to answer the equality questions? | UK Health Security Agency
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <div class="govuk-card govuk-card--confirmation confirmation-display" id="proxy-banner" hidden>
-    </div>
+    <form action="/equality-information/date-of-birth" method="post" class="form">
 
-    <form action="/personal-details/sex" method="post" class="form">
-
-      <h1 class="govuk-heading-l">
+      <h1 id="h1-content" class="govuk-heading-l">
         We have received your information
       </h1>
 
-      <p class="govuk-body">Before you finish using the service, we’d like to ask some equality questions.</p>
+      <p class="govuk-body">
+        Before you finish using the service, we’d like to ask some equality questions.
+      </p>
 
-      <div class="govuk-form-group">
+      <div id="error-form-group" class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="equalities-info-hint">
 
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <legend id="h2-content" class="govuk-fieldset__legend govuk-fieldset__legend--m">
             Do you want to answer the equality questions?
           </legend>
 
@@ -39,17 +38,17 @@ Do you want to answer the equality questions? | UK Health Security Agency
             </p>-->
           </div>
 
-          <div class="govuk-radios" data-module="govuk-radios">
+          <div id="form-1" class="govuk-radios" data-module="govuk-radios">
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="equalities-info" name="equalities-info" type="radio" value="yes">
+              <input class="govuk-radios__input" id="equalities-info" name="equalityQuestions" type="radio" value="yes">
               <label class="govuk-label govuk-radios__label" for="equalities-info">
                 Yes, answer the equality questions (takes 2 minutes)
               </label>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="equalities-info-2" name="equalities-info" type="radio" value="no">
+              <input class="govuk-radios__input" id="equalities-info-2" name="equalityQuestions" type="radio" value="no">
               <label class="govuk-label govuk-radios__label" for="equalities-info-2">
                 No, skip the equality questions
               </label>
@@ -80,6 +79,42 @@ Do you want to answer the equality questions? | UK Health Security Agency
 </div>
 
 <script>
+  window.onload = function() {
+    // Proxy check
+    var proxyValue = "{{ data['proxy'] }}";
 
+    if (proxyValue == "No") {
+      $('#h1-content').html('We have received {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}&#39;s information?');
+      $('#h2-content').html('Do you want to answer the equality questions for {{ data["positive-case-given-names"] | default("Sarah") }} {{ data["positive-case-family-name"] | default("Philips") }}?');
+      return false;
+    }
+  }
+
+  // Errors
+  function validateForm() {
+    var formOptions = document.forms["myForm"]["ethnicity-detail"].value;
+
+    // Error form group styling
+    $('#error-form-group').addClass('govuk-form-group--error');
+
+    // Error message styling
+    $('#form-1').prepend('<span class="govuk-error-message" id="error-1"></span>');
+
+    // Error summary styling
+    $('#myForm').prepend(
+      '<div id="error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary"><h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2><div class="govuk-error-summary__body"><ul id="error-summary-1" class="govuk-list govuk-error-summary__list"><li><a href="#error-1">Select an ethnic background or &#39;Prefer not to say&#39;</a></li></ul></div></div>'
+    );
+
+    if (formOptions == "" || formOptions == null) {
+
+      // Error message content
+      $('#error-1').html('<span class="govuk-visually-hidden">Error:</span> Select an ethnic background or &#39;Prefer not to say&#39;');
+
+      // Error summary content
+      $('#error-summary-1').html('<li><a href="#error-1">Select an ethnic background or &#39;Prefer not to say&#39;</a></li>');
+
+      return false;
+    }
+  }
 </script>
 {% endblock %}

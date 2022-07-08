@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Confirm your email address
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Confirm your email address
+    </h1>
+
+    <form action="/personal-details/confirm-email" method="post" class="form">
+      {{ govukInput({
+        id: 'email',
+        label: { text: 'Email' },
+        name: 'email',
+        value: data | email,
+        classes: 'govuk-!-width-one-half',
+        attributes: { disabled: true }
+      }) }}
+
+      {{ govukInput({
+        id: 'confirm-email',
+        type: 'hidden',
+        name: 'confirmEmail',
+        value: 'true'
+      }) }}
+
+      {{ govukButton({ text: 'Continue' }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

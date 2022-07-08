@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Sign In
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Sign in to your account
+    </h1>
+
+    <form action="/sign-in" method="post" class="form">
+      {{ govukInput({
+        label: { text: "Account ID" },
+        hint: {
+          text: "This was provided in the email or text message invitation you originally received."
+        },
+        name: "accountId",
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      {{ govukInput({
+        label: { text: "Password" },
+        name: "password",
+        type: "password",
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      {{ govukButton({ text: "Sign in" }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

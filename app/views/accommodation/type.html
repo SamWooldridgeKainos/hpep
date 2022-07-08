@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Where do you live?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      Where do you live?
+    </h1>
+
+    <form action="/accommodation/type" method="post" class="form">
+      {{ govukInput({
+        id: 'address-line-1',
+        label: { text: 'Address Line 1' },
+        name: 'addressLine1',
+        value: data.addressLine1,
+        classes: 'govuk-!-width-one-half'
+      }) }}
+
+      {{ govukButton({ text: 'Continue' }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}
